@@ -20,19 +20,26 @@
           <div class="col-4">
             <div class="card">
             
-              <?php $tongkh = "SELECT SUM(tuyenxe.GIAHIENHANH) AS TongTien
-                          FROM vexe
-                          INNER JOIN phieudatve ON vexe.MAPHIEU = phieudatve.MAPHIEU
-                          INNER JOIN khachhang ON phieudatve.EMAIL = khachhang.EMAIL
-                          INNER JOIN chuyenxe ON vexe.ID_CHUYENXE = chuyenxe.ID_CHUYENXE
-                          INNER JOIN tuyenxe ON tuyenxe.ID_TUYEN = chuyenxe.ID_TUYEN
-                          WHERE khachhang.email='" . $_SESSION["email"] . "'
-                          ";
-              $result = mysqli_query($conn, $tongkh);
+              <?php 
+              if (!isset($_SESSION['email']) || empty($_SESSION['email'])) {
+                  // Nếu chưa đăng nhập, hiển thị thông báo hoặc chuyển hướng người dùng đến trang khác
+                  echo "<script>alert('Bạn cần đăng nhập để truy cập vào trang này.');</script>";
+                  echo "<script>window.location.href='index.php';</script>";
+                  exit;
+              } else {
+                $tongkh = "SELECT SUM(tuyenxe.GIAHIENHANH) AS TongTien
+                FROM vexe
+                INNER JOIN phieudatve ON vexe.MAPHIEU = phieudatve.MAPHIEU
+                INNER JOIN khachhang ON phieudatve.EMAIL = khachhang.EMAIL
+                INNER JOIN chuyenxe ON vexe.ID_CHUYENXE = chuyenxe.ID_CHUYENXE
+                INNER JOIN tuyenxe ON tuyenxe.ID_TUYEN = chuyenxe.ID_TUYEN
+                WHERE khachhang.email='" . $_SESSION["email"] . "'
+                ";
+    $result = mysqli_query($conn, $tongkh);
+              }
+
               $tong1 = $result->fetch_assoc();
               $tongve = $tong1["TongTien"]
-
-
 
               ?>
               <div class="card-body pt-0 p-1 text-center">
