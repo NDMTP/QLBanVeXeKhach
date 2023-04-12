@@ -253,8 +253,13 @@
                 <h5 class="mb-0 font-weight-bold " style="color: #EE6D4A">Chi tiết hoá đơn</h5>
               </div>
               <div class="col-2 text-center me-n3">
-                <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-print text-sm me-1"></i>
+                <button id="btnIn" class="btn btn-link text-dark text-sm mb-0 px-0 ms-4"><i class="fas fa-print text-sm me-1"></i>
                   In</button>
+                  <script>
+document.getElementById("btnIn").addEventListener("click", function() {
+    window.print(); // Gọi hàm in của trình duyệt
+});
+</script>
               </div>
               <div class="col-3 text-center">
                 <button class="btn btn-link text-dark text-sm mb-0 px-0 ms-1"><i
