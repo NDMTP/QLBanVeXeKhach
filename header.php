@@ -12,8 +12,10 @@ include("connect.php");
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="TemplateMo">
+
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
         rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo-icon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <title>Hệ thống Xe ABC</title>
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
