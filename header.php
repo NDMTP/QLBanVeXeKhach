@@ -16,15 +16,11 @@ include("connect.php");
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
     <title>Hệ thống Xe ABC</title>
-
-
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
 
     <link rel="stylesheet" href="assets/css/fontawesome.css">
     <link rel="stylesheet" href="assets/css/htqlxe.css">
     <link rel="stylesheet" href="assets/css/owl.css">
-
 
 </head>
 

@@ -8,11 +8,22 @@ include("header.php");
 <body>
 
     <?php
-    $diemdi = $_POST['diemdi'];
-    $diemden = $_POST['diemden'];
-    $ngaydi = $_POST['ngaydi'];
+    if (isset($_POST['diemdi'])) {
+        $diemdi = $_POST['diemdi'];
+    }
+    if (isset($_POST['diemden'])) {
+        $diemden = $_POST['diemden'];
+    }
+    if (isset($_POST['ngaydi'])) {
+        $ngaydi = $_POST['ngaydi'];
+    }else{
+        $ngaydi = "";
+    }
+    //Khứ hồi
     if (isset($_POST['ngayve'])) {
         $ngayve = $_POST['ngayve'];
+    }else{
+        $ngayve = "";
     }
     ?>
 
@@ -164,7 +175,7 @@ include("header.php");
                         </div>
                     </div>
                 </div>
-                <button class="snip1339 " style="float: right;" id="find-flight" onclick="getChuyenXe()">Tìm chuyến xe</button>
+                <button class="snip1339 " style="float: right;" id="find-flight" onclick="getNewChuyenXe()">Tìm chuyến xe</button>
             </div>
         </div>
         <div class="border1 m-5 shadow-lg p-5">

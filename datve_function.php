@@ -248,7 +248,14 @@ function get_TableGhe($biensoxe, $idchuyenxe)
             echo '<tr>';
             for ($j = 1; $j <= 3; $j++) {
                 if ($row = mysqli_fetch_assoc($result)) {
-                    echo '<td> <button type="button" class="btn btn-info m-1 p-2" onclick="showInfoPrice(this)" data-name="' . $row["TENVITRI"] . '" data-id="' . $row["ID_VITRI"] . '">' . $row["TENVITRI"] . '</button></td>';
+                    $isBook = "SELECT COUNT(ID_VE) COCHO FROM vexe WHERE vexe.ID_VITRI = '".$row["ID_VITRI"]."'";
+                    $resultBook = mysqli_query($conn, $isBook);
+                    $checkBook = mysqli_fetch_assoc($resultBook);
+                    if($checkBook["COCHO"]>0){
+                        echo '<td> <button type="button" class="btn btn-secondary m-1 p-2" data-name="' . $row["TENVITRI"] . '" data-id="' . $row["ID_VITRI"] . '">' . $row["TENVITRI"] . '</button></td>';
+                    }else{
+                        echo '<td> <button type="button" class="btn btn-info m-1 p-2" onclick="showInfoPrice(this)" data-name="' . $row["TENVITRI"] . '" data-id="' . $row["ID_VITRI"] . '">' . $row["TENVITRI"] . '</button></td>';
+                    }
                 } else {
                     echo '<td> &nbsp; </td>';
                 }
@@ -268,7 +275,14 @@ function get_TableGhe($biensoxe, $idchuyenxe)
             echo '<tr>';
             for ($j = 1; $j <= 3; $j++) {
                 if ($row = mysqli_fetch_assoc($result)) {
-                    echo '<td> <button type="button" class="btn btn-info m-1 p-2" onclick="showInfoPrice(this)" data-name="' . $row["TENVITRI"] . '" data-id="' . $row["ID_VITRI"] . '">' . $row["TENVITRI"] . '</button></td>';
+                    $isBook = "SELECT COUNT(ID_VE) COCHO FROM vexe WHERE vexe.ID_VITRI = '".$row["ID_VITRI"]."'";
+                    $resultBook = mysqli_query($conn, $isBook);
+                    $checkBook = mysqli_fetch_assoc($resultBook);
+                    if($checkBook["COCHO"]>0){
+                        echo '<td> <button type="button" class="btn btn-secondary m-1 p-2" data-name="' . $row["TENVITRI"] . '" data-id="' . $row["ID_VITRI"] . '">' . $row["TENVITRI"] . '</button></td>';
+                    }else{
+                        echo '<td> <button type="button" class="btn btn-info m-1 p-2" onclick="showInfoPrice(this)" data-name="' . $row["TENVITRI"] . '" data-id="' . $row["ID_VITRI"] . '">' . $row["TENVITRI"] . '</button></td>';
+                    }
                 } else {
                     echo '<td> &nbsp; </td>';
                 }

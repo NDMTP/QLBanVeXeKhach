@@ -144,33 +144,40 @@ include("header.php");
     <!-- Dòng đầu  -->
     <div class="row">
         <!-- Ô đầu  -->
-        <div class="container btn col-md-6 pr-5">
-            <div class="row border2 border">
-                <div>
-                    <img class="img" src="assets/images/SaiGon.jpg" style="max-width: 200px;" alt="">
-                </div>
-                <div>
-                    <h5 class="text22 font-weight-bold text-center ">Sài Gòn ⇒ Đà Lạt</h5>
-                    <div class="text23">
-                        <div data-v-15bcc412="" class="details ">
-                            <span>300.000đ &emsp;&emsp;&emsp;</span>
-                            <p class="fa fa-clock-o icon "></p>
-                            8h &emsp;&emsp;&emsp;
-                            <p class="fa fa-map-marker icon"></p>
-                            310km
+        <form action="datve.php" method="post" class="container col-md-6 pr-5">
+            <input name="diemdi" value="SG59" style="display:none;">
+            <input name="diemden" value="" style="display:none;">
+            <button class="btn" type="submit" name="action" value="xacnhan" style="background-color: rgba(0, 0, 0, 0);">
+                <div class="row border2 border">
+                    <div>
+                        <img class="img" src="assets/images/SaiGon.jpg" style="max-width: 200px;" alt="">
+                    </div>
+                    <div>
+                        <h5 class="text22 font-weight-bold ">Sài Gòn ⇒ Đà Lạt</h5>
+                        <div class="text23">
+                            <div data-v-15bcc412="" class="details ">
+                                <span>300.000đ &emsp;&emsp;&emsp;</span>
+                                <p class="fa fa-clock-o icon "></p>
+                                8h &emsp;&emsp;&emsp;
+                                <p class="fa fa-map-marker icon"></p>
+                                310km
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </button>
+        </form>
         <!-- Ô 2 -->
-        <div class="container btn col-md-6 pl-5">
-            <div class="row border2 border">
-                <div>
-                    <img class="img" src="assets/images/NhaTrang.jpg" style="max-width: 200px;" alt="">
-                </div>
-                <div>
-                    <h5 class="text21 font-weight-bold text-center ">Sài Gòn ⇒ Nha Trang</h5>
+        <form action="datve.php" method="post" class="container col-md-6 pr-5">
+            <input name="diemdi" value="SG59" style="display:none;">
+            <input name="diemden" value="" style="display:none;">
+            <button class="btn" type="submit" name="action" value="xacnhan" style="background-color: rgba(0, 0, 0, 0);">
+                <div class="row border2 border">
+                    <div>
+                        <img class="img" src="assets/images/NhaTrang.jpg" style="max-width: 200px;" alt="">
+                    </div>
+                    <div>
+                    <h5 class="text21 font-weight-bold ">Sài Gòn ⇒ Nha Trang</h5>
                     <div class="text23">
                         <div data-v-15bcc412="" class="details">
                             <span>450.000đ &emsp;&emsp;&emsp;</span>
@@ -180,40 +187,47 @@ include("header.php");
                             275km
                         </div>
                     </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </button>
+        </form>
     </div>
-    <!-- Dòng 2 -->
     <div class="row">
-        <!-- ô 3 -->
-        <div class="container btn col-md-6 pr-5">
-            <div class="row border2 border">
-                <div>
-                    <img class="img" src="assets/images/DaNang.jpg" style="max-width: 200px;" alt="">
-                </div>
-                <div>
-                    <h5 class="text21 font-weight-bold text-center ">Sài Gòn ⇒ Đà Nẵng</h5>
-                    <div class="text23">
-                        <div data-v-15bcc412="" class="details ">
-                            <span>395.000đ &emsp;&emsp;&emsp;</span>
-                            <p class="fa fa-clock-o icon "></p>
-                            20h &emsp;&emsp;&emsp;
-                            <p class="fa fa-map-marker icon"></p>
-                            980km
+        <!-- Ô đầu  -->
+        <form action="datve.php" method="post" class="container col-md-6 pr-5">
+            <input name="diemdi" value="SG59" style="display:none;">
+            <input name="diemden" value="" style="display:none;">
+            <button class="btn" type="submit" name="action" value="xacnhan" style="background-color: rgba(0, 0, 0, 0);">
+                <div class="row border2 border">
+                    <div>
+                        <img class="img" src="assets/images/DaNang.jpg" style="max-width: 200px;" alt="">
+                    </div>
+                    <div>
+                        <h5 class="text21 font-weight-bold ">Sài Gòn ⇒ Đà Nẵng</h5>
+                        <div class="text23">
+                            <div data-v-15bcc412="" class="details ">
+                                <span>395.000đ &emsp;&emsp;&emsp;</span>
+                                <p class="fa fa-clock-o icon "></p>
+                                20h &emsp;&emsp;&emsp;
+                                <p class="fa fa-map-marker icon"></p>
+                                980km
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- ô 4 -->
-        <div class="container btn col-md-6 pl-5">
-            <div class="row border2 border">
-                <div>
-                    <img class="img" src="assets/images/CanTho.jpg" style="max-width: 200px;" alt="">
-                </div>
-                <div>
-                    <h5 class="text22 font-weight-bold text-center ">Sài Gòn ⇒ Cần Thơ</h5>
+            </button>
+        </form>
+        <!-- Ô 2 -->
+        <form action="datve.php" method="post" class="container col-md-6 pr-5">
+            <input name="diemdi" value="SG59" style="display:none;">
+            <input name="diemden" value="CT65" style="display:none;">
+            <button class="btn" type="submit" name="action" value="xacnhan" style="background-color: rgba(0, 0, 0, 0);">
+                <div class="row border2 border">
+                    <div>
+                        <img class="img" src="assets/images/CanTho.jpg" style="max-width: 200px;" alt="">
+                    </div>
+                    <div>
+                    <h5 class="text22 font-weight-bold ">Sài Gòn ⇒ Cần Thơ</h5>
                     <div class="text23">
                         <div data-v-15bcc412="" class="details ">
                             <span>165.000đ &emsp;&emsp;&emsp;</span>
@@ -223,63 +237,76 @@ include("header.php");
                             190km
                         </div>
                     </div>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </button>
+        </form>
     </div>
+    
     <!-- Dòng 3 -->
     <div class="row">
-        <!-- ô 5 -->
-        <div class="container btn col-md-6 pr-5">
-            <div class="row border2 border">
-                <div>
-                    <img class="img" src="assets/images/HaNoi.jpg" style="max-width: 200px;" alt="">
-                </div>
-                <div>
-                    <h5 class="text22 font-weight-bold text-center ">Đà Nẵng ⇒ Hà Nội</h5>
-                    <div class="text23">
-                        <div data-v-15bcc412="" class="details ">
-                            <span>360.000đ &emsp;&emsp;&emsp;</span>
-                            <p class="fa fa-clock-o icon "></p>
-                            18h &emsp;&emsp;&emsp;
-                            <p class="fa fa-map-marker icon"></p>
-                            745km
+        <!-- Ô đầu  -->
+        <form action="datve.php" method="post" class="container col-md-6 pr-5">
+            <input name="diemdi" value="" style="display:none;">
+            <input name="diemden" value="" style="display:none;">
+            <button class="btn" type="submit" name="action" value="xacnhan" style="background-color: rgba(0, 0, 0, 0);">
+                <div class="row border2 border">
+                    <div>
+                        <img class="img" src="assets/images/HaNoi.jpg" style="max-width: 200px;" alt="">
+                    </div>
+                    <div>
+                        <h5 class="text22 font-weight-bold ">Đà Nẵng ⇒ Hà Nội</h5>
+                        <div class="text23">
+                            <div data-v-15bcc412="" class="details ">
+                                <span>360.000đ &emsp;&emsp;&emsp;</span>
+                                <p class="fa fa-clock-o icon "></p>
+                                18h &emsp;&emsp;&emsp;
+                                <p class="fa fa-map-marker icon"></p>
+                                745km
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <!-- ô 6 -->
-        <div class="container btn col-md-6 pl-5">
-            <div class="row border2 border">
-                <div>
-                    <img class="img" src="assets/images/RachGia.jpg" style="max-width: 200px;" alt="">
-                </div>
-                <div>
-                    <h5 class="text21 font-weight-bold text-center ">Sài Gòn ⇒ Rạch Giá</h5>
-                    <div class="text23">
-                        <div data-v-15bcc412="" class="details ">
-                            <span>190.000đ &emsp;&emsp;&emsp;</span>
-                            <p class="fa fa-clock-o icon "></p>
-                            5h &emsp;&emsp;&emsp;
-                            <p class="fa fa-map-marker icon"></p>
-                            235km
+            </button>
+        </form>
+        <!-- Ô 2 -->
+        <form action="datve.php" method="post" class="container col-md-6 pr-5">
+            <input name="diemdi" value="SG59" style="display:none;">
+            <input name="diemden" value="" style="display:none;">
+            <button class="btn" type="submit" name="action" value="xacnhan" style="background-color: rgba(0, 0, 0, 0);">
+                <div class="row border2 border">
+                    <div>
+                        <img class="img" src="assets/images/RachGia.jpg" style="max-width: 200px;" alt="">
+                    </div>
+                    <div>
+                        <h5 class="text21 font-weight-bold ">Sài Gòn ⇒ Rạch Giá</h5>
+                        <div class="text23">
+                            <div data-v-15bcc412="" class="details ">
+                                <span>190.000đ &emsp;&emsp;&emsp;</span>
+                                <p class="fa fa-clock-o icon "></p>
+                                5h &emsp;&emsp;&emsp;
+                                <p class="fa fa-map-marker icon"></p>
+                                235km
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </button>
+        </form>
     </div>
     <!-- Dòng 4 -->
     <div class="row">
-        <!-- ô 7 -->
-        <div class="container btn col-md-6 pr-5">
-            <div class="row border2 border">
-                <div>
-                    <img class="img" src="assets/images/ChauDoc.jpg" style="max-width: 200px;" alt="">
-                </div>
-                <div>
-                    <h5 class="text21 font-weight-bold text-center ">Sài Gòn ⇒ Châu Đốc</h5>
+        <!-- Ô đầu  -->
+        <form action="datve.php" method="post" class="container col-md-6 pr-5">
+            <input name="diemdi" value="SG59" style="display:none;">
+            <input name="diemden" value="" style="display:none;">
+            <button class="btn" type="submit" name="action" value="xacnhan" style="background-color: rgba(0, 0, 0, 0);">
+                <div class="row border2 border">
+                    <div>
+                        <img class="img" src="assets/images/ChauDoc.jpg" style="max-width: 200px;" alt="">
+                    </div>
+                    <div>
+                    <h5 class="text21 font-weight-bold ">Sài Gòn ⇒ Châu Đốc</h5>
                     <div class="text23">
                         <div data-v-15bcc412="" class="details ">
                             <span>175.000đ &emsp;&emsp;&emsp;</span>
@@ -289,30 +316,34 @@ include("header.php");
                             240km
                         </div>
                     </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- ô 8 -->
-        <div class="container btn col-md-6 pl-5">
-            <div class="row border2 border">
-                <div>
-                    <img class="img" src="assets/images/CaMau.jpg" style="max-width: 200px;" alt="">
-                </div>
-                <div>
-                    <h5 class="text22 font-weight-bold text-center ">Sài Gòn ⇒ Cà Mau</h5>
-                    <div class="text23">
-                        <div data-v-15bcc412="" class="details ">
-                            <span>230.000đ &emsp;&emsp;&emsp;</span>
-                            <p class="fa fa-clock-o icon "></p>
-                            8h &emsp;&emsp;&emsp;
-                            <p class="fa fa-map-marker icon"></p>
-                            357km
+            </button>
+        </form>
+        <!-- Ô 2 -->
+        <form action="datve.php" method="post" class="container col-md-6 pr-5">
+            <input name="diemdi" value="SG59" style="display:none;">
+            <input name="diemden" value="CM04" style="display:none;">
+            <button class="btn" type="submit" name="action" value="xacnhan" style="background-color: rgba(0, 0, 0, 0);">
+                <div class="row border2 border">
+                    <div>
+                        <img class="img" src="assets/images/CaMau.jpg" style="max-width: 200px;" alt="">
+                    </div>
+                    <div>
+                        <h5 class="text22 font-weight-bold ">Sài Gòn ⇒ Cà Mau</h5>
+                        <div class="text23">
+                            <div data-v-15bcc412="" class="details ">
+                                <span>230.000đ &emsp;&emsp;&emsp;</span>
+                                <p class="fa fa-clock-o icon "></p>
+                                8h &emsp;&emsp;&emsp;
+                                <p class="fa fa-map-marker icon"></p>
+                                357km
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
+            </button>
+        </form>
     </div>
 
 </div>

@@ -66,22 +66,26 @@ while ($row = $result1->fetch_array()) {
     echo "<th scope=\"row\" colspan=\"6\" class=\"table-danger\">$row[0]</th>
             </tr>
             ";
-    $sql = "SELECT tentuyen,quangduong,tgdichuyentb FROM tuyenxe,benxe,tinhthanh,quanhuyen 
-            WHERE tinhthanh.MATINH = quanhuyen.MATINH 
-            AND quanhuyen.MAQUANHUYEN = benxe.MAQUANHUYEN 
-            AND benxe.MABX = tuyenxe.MABX 
-            AND tinhthanh.MATINH = '$row[1]'";
+    $sql = "SELECT a.tentuyen, a.quangduong, a.tgdichuyentb, ttdi.MATINH, ttden.MATINH FROM chuyenxe c, tuyenxe a, benxe bxdi, benxe bxden, quanhuyen qhdi, quanhuyen qhden , tinhthanh ttdi, tinhthanh ttden, xe x, loaixe lx
+    WHERE c.ID_TUYEN = a.ID_TUYEN
+    AND a.MABX = bxdi.MABX AND a.BEN_MABX = bxden.MABX 
+    AND bxdi.MAQUANHUYEN = qhdi.MAQUANHUYEN AND bxden.MAQUANHUYEN = qhden.MAQUANHUYEN
+    AND qhdi.MATINH = ttdi.MATINH AND qhden.MATINH = ttden.MATINH
+    AND c.BIENSO = x.BIENSO AND x.ID_LOAI = lx.ID_LOAI
+    AND ttdi.MATINH = '$row[1]'";
     $result = $conn->query($sql);
     $result_all = $result->fetch_all();
 
     foreach ($result_all as $row) {
         echo '<tr class="table-light">';
-        echo '<form action="" method="post">';
+        echo '<form action="datve.php" method="post">';
+        echo '<input name="diemdi" value="'.$row[3].'" style="display:none;">';
+        echo '<input name="diemden" value="'.$row[4].'" style="display:none;">';
         echo '<td>' . $row[0] . '</td>';
         echo '<td>' . $row[1] . ' Km</td>';
         echo '<td>' . $row[2] . ' Giờ</td>';
         echo '<td><a href="#" class="text-decoration-none">Chi tiết <i class="fa-solid fa-circle-info"></i></a></td>';
-        echo '<td><button class="text-danger border-0 bg-transparent" style="cursor: pointer;"><i class="fa-solid fa-ticket-simple"></i> Đặt Vé</button></td>';
+        echo '<td><button type="submit" class="text-danger border-0 bg-transparent" style="cursor: pointer;"><i class="fa-solid fa-ticket-simple"></i> Đặt Vé</button></td>';
         echo '</form>';
         echo '</tr>';
     }
