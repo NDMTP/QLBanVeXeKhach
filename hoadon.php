@@ -19,12 +19,13 @@
         <div class="row">
           <div class="col-4">
             <div class="card">
-
-              <?php $tongkh = "SELECT SUM(chuyenxe.GIA) AS TongTien
+            
+              <?php $tongkh = "SELECT SUM(tuyenxe.GIAHIENHANH) AS TongTien
                           FROM vexe
                           INNER JOIN phieudatve ON vexe.MAPHIEU = phieudatve.MAPHIEU
                           INNER JOIN khachhang ON phieudatve.EMAIL = khachhang.EMAIL
                           INNER JOIN chuyenxe ON vexe.ID_CHUYENXE = chuyenxe.ID_CHUYENXE
+                          INNER JOIN tuyenxe ON tuyenxe.ID_TUYEN = chuyenxe.ID_TUYEN
                           WHERE khachhang.email='" . $_SESSION["email"] . "'
                           ";
               $result = mysqli_query($conn, $tongkh);
