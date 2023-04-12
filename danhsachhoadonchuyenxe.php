@@ -12,11 +12,12 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 //tao chuoi luu cau lenh sql
-$sql = "SELECT chuyenxe.TENCHUYENXE, chuyenxe.THOIDIEMDITT, phieudatve.NGAYLAP, chuyenxe.GIA
+$sql = "SELECT chuyenxe.TENCHUYENXE, chuyenxe.THOIDIEMDITT, phieudatve.NGAYLAP, tuyenxe.GIAHIENHANH
 FROM vexe
 INNER JOIN phieudatve ON vexe.MAPHIEU = phieudatve.MAPHIEU
 INNER JOIN khachhang ON phieudatve.EMAIL = khachhang.EMAIL
 INNER JOIN chuyenxe ON vexe.ID_CHUYENXE = chuyenxe.ID_CHUYENXE
+INNER JOIN tuyenxe ON tuyenxe.ID_TUYEN = chuyenxe.ID_TUYEN
 WHERE khachhang.email='".$_SESSION["email"]."'
 
 

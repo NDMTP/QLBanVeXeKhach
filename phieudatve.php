@@ -44,19 +44,19 @@ foreach ($_SESSION['idvitri'] as $key => $value) {
 $v_sove = $_SESSION["tongsove"];
 
 
-// if ($_POST['action'] == 'xacnhan') {
-//     //Tạo phiếu
-//     $query = "INSERT INTO `phieudatve` (`MAPHIEU`, `EMAIL`, `NGAYLAP`, `TongTien`) VALUES ('".$pdv_id."', '".$pdv_email."', '".$pdv_date."', '".$pdv_money."')";
-//     $result = mysqli_query($conn, $query);
-//     //Tạo vé
-//     for($i=1; $i<=$v_sove; $i++){
-//         $idghe = ${'id'.$i};
-//         $query = "INSERT INTO `vexe` (`ID_VE`, `ID_CHUYENXE`, `MAPHIEU`, `ID_VITRI`, `TENVE`) VALUES ('".$v_id."', '".$v_idChuyenXe."', '".$v_idPdv."', '".$idghe."', '".$v_ten."')";
-//         $result = mysqli_query($conn, $query);
-//         $v_id = 'V'.substr($v_id, 1)+1;
-//         $v_ten = 'Vé '.$v_id;
-//     }
-//   }
+if ($_POST['action'] == 'xacnhan') {
+    //Tạo phiếu
+    $query = "INSERT INTO `phieudatve` (`MAPHIEU`, `EMAIL`, `NGAYLAP`, `TongTien`) VALUES ('".$pdv_id."', '".$pdv_email."', '".$pdv_date."', '".$pdv_money."')";
+    $result = mysqli_query($conn, $query);
+    //Tạo vé
+    for($i=1; $i<=$v_sove; $i++){
+        $idghe = ${'id'.$i};
+        $query = "INSERT INTO `vexe` (`ID_VE`, `ID_CHUYENXE`, `MAPHIEU`, `ID_VITRI`, `TENVE`) VALUES ('".$v_id."', '".$v_idChuyenXe."', '".$v_idPdv."', '".$idghe."', '".$v_ten."')";
+        $result = mysqli_query($conn, $query);
+        $v_id = 'V'.substr($v_id, 1)+1;
+        $v_ten = 'Vé '.$v_id;
+    }
+  }
 
   include('header.php');
 ?>
