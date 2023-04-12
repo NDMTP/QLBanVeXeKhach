@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="EN">
-
+<title>Tìm kiếm</title>
 <!-- footer--><?php
 include("header.php");
 echo"<section class=\"container tuyenxe\">";
