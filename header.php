@@ -55,10 +55,9 @@ include("connect.php");
                 </div>
                 <div class="col-md-4">
                     <ul class="right-icons">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=100009120025858"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://www.facebook.com/photo.php?fbid=987626782189441&set=pb.100028263850391.-2207520000.&type=3git"><i class="fa fa-twitter"></i></a></li>
+
                     </ul>
                 </div>
             </div>
