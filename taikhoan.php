@@ -5,7 +5,7 @@
 include("header.php");
 
 ?>
-
+ <title>Đăng nhập - Đăng ký</title>
 <!-- tai khoan Start -->
 <div class="container-fluid pt-5">
     <div class="text-center mb-4">

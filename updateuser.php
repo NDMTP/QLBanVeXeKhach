@@ -10,11 +10,11 @@
                
                 if(isset($_POST["sb"])){
                     session_start();
-                  $sql1="select*from khachhang where email='".$_SESSION["email"]."' and password='".md5($_POST["psw"])."'";
+                  $sql1="select*from khachhang where email='".$_SESSION["email"]."'";
                   
                   $result1 = $conn->query($sql1);
                     if($result1->num_rows>0){
-                        $sql=" UPDATE khachhang SET HOTEN='".$_POST["ten"]."',NGHENGHIEP='".$_POST["nn"]."',NAMSINH='".$_POST["ngaysinh"]."',
+                        $sql=" UPDATE khachhang SET HOTEN='".$_POST["ten"]."',NAMSINH='".$_POST["ngaysinh"]."',
                         GIOITINH='".$_POST["gioitinh"]."',SDT='".$_POST["sdt"]."',DIACHI='".$_POST["diachi"]."' WHERE email='".$_SESSION["email"]."'
                         ";
                         $result2 = $conn->query($sql);
@@ -27,21 +27,18 @@
                             exit();
                              </script>';
                         }
-                        else{
-                           // echo"Lỗi không thể đăng ký";
-                          
-                        }
+                     
                        }
+                     
                        else{
                         echo 
                         '<script language="javascript">
-                            alert("Mật khẩu xác nhận không đúng!");
+                            alert("Không Thể Cập Nhật!");
                             history.back();
                             exit();
                              </script>';
                         
                        }
-                       
                         
                       
                         

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<title>Đặt vé</title>
 <?php
 include("header.php");
 ?>
@@ -175,7 +175,8 @@ include("header.php");
                         </div>
                     </div>
                 </div>
-                <button class="snip1339 " style="float: right;" id="find-flight" onclick="getNewChuyenXe()">Tìm chuyến xe</button>
+                <button class="snip1339 " style="float: right;" id="find-flight" onclick="getNewChuyenXe()">Tìm chuyến
+                    xe</button>
             </div>
         </div>
         <div class="border1 m-5 shadow-lg p-5">
@@ -271,7 +272,8 @@ include("header.php");
             </div>
             <div class="row">
                 <div class="col">
-                    <button type="button" class="btn btn-outline-secondary mt-2" style="float: right;" onclick="getNewChuyenXe()">Lọc chuyến xe</button>
+                    <button type="button" class="btn btn-outline-secondary mt-2" style="float: right;"
+                        onclick="getNewChuyenXe()">Lọc chuyến xe</button>
                 </div>
             </div>
             <hr>
@@ -360,171 +362,185 @@ include("header.php");
 
 
     <script>
-        // LẤY BẾN ĐI MỚI VÀ THAY VÀO CHỔ CHỌN BẾN ĐI KHI NGƯỜI DÙNG BẤM CHỌN QUẬN HUYỆN
+    // LẤY BẾN ĐI MỚI VÀ THAY VÀO CHỔ CHỌN BẾN ĐI KHI NGƯỜI DÙNG BẤM CHỌN QUẬN HUYỆN
 
-        function getDivBenDi() {
-            var maquanhuyen = document.getElementById("quanhuyendi").value;
-            var matinhdi = document.getElementById("diemdi").value;
-            var xmlhttp = new XMLHttpRequest();
+    function getDivBenDi() {
+        var maquanhuyen = document.getElementById("quanhuyendi").value;
+        var matinhdi = document.getElementById("diemdi").value;
+        var xmlhttp = new XMLHttpRequest();
 
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    // xử lý phản hồi từ server
-                    document.getElementById("ajaxbendi").innerHTML = this.responseText;
-                }
-            };
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                // xử lý phản hồi từ server
+                document.getElementById("ajaxbendi").innerHTML = this.responseText;
+            }
+        };
 
-            xmlhttp.open("GET", "datve_function.php?function=ajaxbendi&matinh=" + matinhdi + "&maquanhuyen=" + maquanhuyen, true);
-            xmlhttp.send();
-            document.getElementById("bendi").remove();
+        xmlhttp.open("GET", "datve_function.php?function=ajaxbendi&matinh=" + matinhdi + "&maquanhuyen=" + maquanhuyen,
+            true);
+        xmlhttp.send();
+        document.getElementById("bendi").remove();
 
-        }
+    }
 
-        function getDivBenDen() {
-            var maquanhuyen = document.getElementById("quanhuyenden").value;
-            var matinhden = document.getElementById("diemden").value;
-            var xmlhttp = new XMLHttpRequest();
+    function getDivBenDen() {
+        var maquanhuyen = document.getElementById("quanhuyenden").value;
+        var matinhden = document.getElementById("diemden").value;
+        var xmlhttp = new XMLHttpRequest();
 
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    // xử lý phản hồi từ server
-                    document.getElementById("ajaxbenden").innerHTML = this.responseText;
-                }
-            };
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                // xử lý phản hồi từ server
+                document.getElementById("ajaxbenden").innerHTML = this.responseText;
+            }
+        };
 
-            xmlhttp.open("GET", "datve_function.php?function=ajaxbenden&matinh=" + matinhden + "&maquanhuyen=" + maquanhuyen, true);
-            xmlhttp.send();
-            document.getElementById("benden").remove();
-        }
+        xmlhttp.open("GET", "datve_function.php?function=ajaxbenden&matinh=" + matinhden + "&maquanhuyen=" +
+            maquanhuyen, true);
+        xmlhttp.send();
+        document.getElementById("benden").remove();
+    }
 
-        // LẤY CHUYẾN XE MỚI VÀ THAY VÀO CHUYẾN XE CŨ KHI NGƯỜI DÙNG BẤM LỌC
+    // LẤY CHUYẾN XE MỚI VÀ THAY VÀO CHUYẾN XE CŨ KHI NGƯỜI DÙNG BẤM LỌC
 
-        function makeNull(x) {
-            if (x == "Chọn")
-                x = "";
-            return x;
-        }
+    function makeNull(x) {
+        if (x == "Chọn")
+            x = "";
+        return x;
+    }
 
-        function getNewChuyenXe() {
-            var maquanhuyendi = makeNull(document.getElementById("quanhuyendi").value);
-            var mabendi = makeNull(document.getElementById("bendi").value);
-            var maquanhuyenden = makeNull(document.getElementById("quanhuyenden").value);
-            var mabenden = makeNull(document.getElementById("benden").value);
-            var matinhdi = makeNull(document.getElementById("diemdi").value);
-            var matinhden = makeNull(document.getElementById("diemden").value);
+    function getNewChuyenXe() {
+        var maquanhuyendi = makeNull(document.getElementById("quanhuyendi").value);
+        var mabendi = makeNull(document.getElementById("bendi").value);
+        var maquanhuyenden = makeNull(document.getElementById("quanhuyenden").value);
+        var mabenden = makeNull(document.getElementById("benden").value);
+        var matinhdi = makeNull(document.getElementById("diemdi").value);
+        var matinhden = makeNull(document.getElementById("diemden").value);
 
-            var xmlhttp = new XMLHttpRequest();
+        var xmlhttp = new XMLHttpRequest();
 
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    // xử lý phản hồi từ server
-                    document.getElementById("chuyenxe_ajax").innerHTML = this.responseText;
-                    if (this.responseText == "") {
-                        document.getElementById("chuyenxe_ajax").innerHTML = "KHÔNG CÓ CHUYẾN XE"
-                    }
-                }
-            };
-
-            xmlhttp.open("GET", "datve_function.php?function=ajaxchuyenxe&maquanhuyendi=" + maquanhuyendi + "&maquanhuyenden=" + maquanhuyenden + "&mabendi=" + mabendi + "&mabenden=" + mabenden + "&matinhdi=" + matinhdi + "&matinhden=" + matinhden, true);
-            xmlhttp.send();
-
-            document.getElementById("chuyenxe_item").remove();
-        }
-
-        // LẤY QUẬN HUYỆN MỚI VÀ THAY VÀO QUẬN HUYỆN CŨ KHI NGƯỜI DÙNG CHỌN TỈNH THÀNH (ĐIỂM ĐI/ĐIỂM ĐẾN)
-
-        function getDivQuanDi() {
-            var matinhdi = document.getElementById("diemdi").value;
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    // xử lý phản hồi từ server
-                    document.getElementById("ajaxquandi").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("GET", "datve_function.php?function=ajaxquandi&matinh=" + matinhdi, true);
-            xmlhttp.send();
-            document.getElementById("quanhuyendi").remove();
-        }
-
-        function getDivQuanDen() {
-            var matinhdi = document.getElementById("diemden").value;
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    // xử lý phản hồi từ server
-                    document.getElementById("ajaxquanden").innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("GET", "datve_function.php?function=ajaxquanden&matinh=" + matinhdi, true);
-            xmlhttp.send();
-            document.getElementById("quanhuyenden").remove();
-        }
-
-        // LẤY DANH SÁCH GHẾ KHI NGƯỜI DÙNG CHỌN CHUYẾN
-        var sumTicket = 0; //Biến cộng vé 
-        var tenvitri = [];
-        var idvitri = [];
-        function getTableGhe() {
-            sumTicket = 0;
-            tenvitri = [];
-            idvitri = [];
-            var biensoxe = event.target.closest('.container').querySelector('.biensoxe').textContent;
-            var idchuyenxe = event.target.closest('.container').querySelector('.idchuyenxe').textContent;
-            /////////////
-            var codeDiv = event.target.closest('.container').querySelector('.show_tableghe');
-            var xmlhttp = new XMLHttpRequest();
-            xmlhttp.onreadystatechange = function() {
-                if (this.readyState == 4 && this.status == 200) {
-                    codeDiv.innerHTML = this.responseText;
-                }
-            };
-            xmlhttp.open("GET", "datve_function.php?function=get_tableghe&biensoxe=" + biensoxe + "&idchuyenxe=" + idchuyenxe, true);
-            xmlhttp.send();
-            var allRadios = document.querySelectorAll('.selectChuyenXe');
-            for (var i = 0; i < allRadios.length; i++) {
-                var radioDiv = allRadios[i].closest('.container').querySelector('.show_tableghe');
-                if (radioDiv && radioDiv !== codeDiv) {
-                    radioDiv.innerHTML = '';
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                // xử lý phản hồi từ server
+                document.getElementById("chuyenxe_ajax").innerHTML = this.responseText;
+                if (this.responseText == "") {
+                    document.getElementById("chuyenxe_ajax").innerHTML = "KHÔNG CÓ CHUYẾN XE"
                 }
             }
-        }
+        };
 
-        //LẤY CÁI GHẾ ĐEM ĐỔI MÀU RỒI TÍNH SỐ VÉ VỚI TIỀN
+        xmlhttp.open("GET", "datve_function.php?function=ajaxchuyenxe&maquanhuyendi=" + maquanhuyendi +
+            "&maquanhuyenden=" + maquanhuyenden + "&mabendi=" + mabendi + "&mabenden=" + mabenden + "&matinhdi=" +
+            matinhdi + "&matinhden=" + matinhden, true);
+        xmlhttp.send();
 
-        function showInfoPrice(button) {
-            var idVitri = button.getAttribute("data-id");
-            var tenVitri = button.getAttribute("data-name");
-            var nowmoney = event.target.closest('.container').querySelector('.now-money').textContent;
-            // Nếu chưa đặt
-            if ($(button).hasClass('btn-info')) {
-                sumTicket++;
-                tenvitri.push(tenVitri);
-                idvitri.push(idVitri);
-                $(button).removeClass('btn-info').addClass('btn-danger');
-                
-            } else {
-                sumTicket--;
-                tenvitri.pop();
-                idvitri.pop();
-                $(button).removeClass('btn-danger').addClass('btn-info');
+        document.getElementById("chuyenxe_item").remove();
+    }
+
+    // LẤY QUẬN HUYỆN MỚI VÀ THAY VÀO QUẬN HUYỆN CŨ KHI NGƯỜI DÙNG CHỌN TỈNH THÀNH (ĐIỂM ĐI/ĐIỂM ĐẾN)
+
+    function getDivQuanDi() {
+        var matinhdi = document.getElementById("diemdi").value;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                // xử lý phản hồi từ server
+                document.getElementById("ajaxquandi").innerHTML = this.responseText;
             }
-            var money = (sumTicket*nowmoney).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
-            document.getElementById("sumticket").innerHTML = "Tổng số vé: "+sumTicket+" vé";
-            document.getElementById("summoney").innerHTML = "Tổng tiền: "+money.slice(0,-2)+".000đ";
+        };
+        xmlhttp.open("GET", "datve_function.php?function=ajaxquandi&matinh=" + matinhdi, true);
+        xmlhttp.send();
+        document.getElementById("quanhuyendi").remove();
+    }
 
-            $.ajax({
-                url: "datve_function.php",
-                type: "POST",
-                data: {sumTicket: sumTicket, money: money.slice(0,-2), idVitri: idvitri, tenVitri: tenvitri},
-                success: function(response) {
-                    console.log(response);
-                },
-                error: function(jqXHR, textStatus, errorThrown) {
-                    console.log(textStatus, errorThrown);
-                }
-            });
+    function getDivQuanDen() {
+        var matinhdi = document.getElementById("diemden").value;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                // xử lý phản hồi từ server
+                document.getElementById("ajaxquanden").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "datve_function.php?function=ajaxquanden&matinh=" + matinhdi, true);
+        xmlhttp.send();
+        document.getElementById("quanhuyenden").remove();
+    }
+
+    // LẤY DANH SÁCH GHẾ KHI NGƯỜI DÙNG CHỌN CHUYẾN
+    var sumTicket = 0; //Biến cộng vé 
+    var tenvitri = [];
+    var idvitri = [];
+
+    function getTableGhe() {
+        sumTicket = 0;
+        tenvitri = [];
+        idvitri = [];
+        var biensoxe = event.target.closest('.container').querySelector('.biensoxe').textContent;
+        var idchuyenxe = event.target.closest('.container').querySelector('.idchuyenxe').textContent;
+        /////////////
+        var codeDiv = event.target.closest('.container').querySelector('.show_tableghe');
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                codeDiv.innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET", "datve_function.php?function=get_tableghe&biensoxe=" + biensoxe + "&idchuyenxe=" +
+            idchuyenxe, true);
+        xmlhttp.send();
+        var allRadios = document.querySelectorAll('.selectChuyenXe');
+        for (var i = 0; i < allRadios.length; i++) {
+            var radioDiv = allRadios[i].closest('.container').querySelector('.show_tableghe');
+            if (radioDiv && radioDiv !== codeDiv) {
+                radioDiv.innerHTML = '';
+            }
         }
+    }
+
+    //LẤY CÁI GHẾ ĐEM ĐỔI MÀU RỒI TÍNH SỐ VÉ VỚI TIỀN
+
+    function showInfoPrice(button) {
+        var idVitri = button.getAttribute("data-id");
+        var tenVitri = button.getAttribute("data-name");
+        var nowmoney = event.target.closest('.container').querySelector('.now-money').textContent;
+        // Nếu chưa đặt
+        if ($(button).hasClass('btn-info')) {
+            sumTicket++;
+            tenvitri.push(tenVitri);
+            idvitri.push(idVitri);
+            $(button).removeClass('btn-info').addClass('btn-danger');
+
+        } else {
+            sumTicket--;
+            tenvitri.pop();
+            idvitri.pop();
+            $(button).removeClass('btn-danger').addClass('btn-info');
+        }
+        var money = (sumTicket * nowmoney).toLocaleString('vi-VN', {
+            style: 'currency',
+            currency: 'VND'
+        });
+        document.getElementById("sumticket").innerHTML = "Tổng số vé: " + sumTicket + " vé";
+        document.getElementById("summoney").innerHTML = "Tổng tiền: " + money.slice(0, -2) + ".000đ";
+
+        $.ajax({
+            url: "datve_function.php",
+            type: "POST",
+            data: {
+                sumTicket: sumTicket,
+                money: money.slice(0, -2),
+                idVitri: idvitri,
+                tenVitri: tenvitri
+            },
+            success: function(response) {
+                console.log(response);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+    }
     </script>
 
 

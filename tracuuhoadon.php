@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="EN">
-
+<title>Tra Cứu Hóa Đơn</title>
 <?php
 include("header.php");
 ?>

@@ -17,7 +17,7 @@ include("connect.php");
         rel="stylesheet">
     <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo-icon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <title>Hệ thống Xe ABC</title>
+   
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="assets/css/fontawesome.css">
