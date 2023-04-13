@@ -4,7 +4,7 @@
 include("header.php");
 include("connect.php");
 ?>
-
+ <title>Lịch Trình</title>
 <!-- Tim kiem tuyen-->
 <div class="row timtuyen container">
     <div class="col-6 mt-3">

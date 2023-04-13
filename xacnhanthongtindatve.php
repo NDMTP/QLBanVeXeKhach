@@ -1,16 +1,19 @@
 <?php
 include('header.php');
 ?>
-
+<title>Xác Nhận Thông tin</title>
 <div class="m-5">
     <form class="p-5 m-5" action="phieudatve.php" method="post">
-        <div class="row border d-flex justify-content-center" style="border-radius: 15px 15px 0 0; background-color:#E9E9E9;">
+        <div class="row border d-flex justify-content-center"
+            style="border-radius: 15px 15px 0 0; background-color:#E9E9E9;">
             <h4 class=" p-3 font-weight-bold" style="color: #ba2f25; text-align: center;">THÔNG TIN HÀNH KHÁCH</h4>
         </div>
         <div class="row border-left border-right shadow">
             <div class="row ml-5 mr-5">
                 <div class="col m-3 p-5 border-right">
-                    <h5 class="border p-1 ml-5 mr-5" style="color: #ba2f25; text-align: center; border-radius:10px; background-color: #f7f7f7;">XÁC NHẬN THÔNG TIN</h5>
+                    <h5 class="border p-1 ml-5 mr-5"
+                        style="color: #ba2f25; text-align: center; border-radius:10px; background-color: #f7f7f7;">XÁC
+                        NHẬN THÔNG TIN</h5>
                     <div class="row border mt-3" style="border-radius:10px; background-color: #f7f7f7;">
                         <?php
                         $gettenben = "SELECT bx.TENBEN from tuyenxe t, benxe bx WHERE t.MABX = bx.MABX AND bx.MABX = '" . $_SESSION["benxedi"] . "'";
@@ -40,20 +43,29 @@ include('header.php');
                     </div>
                 </div>
                 <div class="col m-3 p-5">
-                    <h5 class="border p-1 ml-5 mr-5" style="color: #ba2f25; text-align: center; border-radius:10px; background-color: #f7f7f7;">QUY ĐỊNH & ĐIỀU KHOẢN</h5>
+                    <h5 class="border p-1 ml-5 mr-5"
+                        style="color: #ba2f25; text-align: center; border-radius:10px; background-color: #f7f7f7;">QUY
+                        ĐỊNH & ĐIỀU KHOẢN</h5>
                     <div class="row border mt-3" style="border-radius:10px; background-color: #f7f7f7;">
                         <div class="m-4">
                             <div class="row">
-                                <p>(*) Quý khách vui lòng mang email có chứa mã vé đến văn phòng để đổi vé lên xe trước giờ xuất bến ít nhất <b style="color: #ba2f25;">60 phút</b> để chúng tôi trung chuyển.</p>
+                                <p>(*) Quý khách vui lòng mang email có chứa mã vé đến văn phòng để đổi vé lên xe trước
+                                    giờ xuất bến ít nhất <b style="color: #ba2f25;">60 phút</b> để chúng tôi trung
+                                    chuyển.</p>
                             </div>
                             <div class="row">
-                                <p>(*) Thông tin hành khách phải chính xác, nếu không sẽ không thể lên xe hoặc hủy/đổi vé.</p>
+                                <p>(*) Thông tin hành khách phải chính xác, nếu không sẽ không thể lên xe hoặc hủy/đổi
+                                    vé.</p>
                             </div>
                             <div class="row">
-                                <p>(*) Quý khách không được đổi/trả vé vào các ngày Lễ Tết (ngày thường quý khách được quyền chuyển đổi hoặc hủy vé <b style="color: #ba2f25;">một lần</b> duy nhất trước giờ xe chạy 24 giờ), phí hủy vé 10%.</p>
+                                <p>(*) Quý khách không được đổi/trả vé vào các ngày Lễ Tết (ngày thường quý khách được
+                                    quyền chuyển đổi hoặc hủy vé <b style="color: #ba2f25;">một lần</b> duy nhất trước
+                                    giờ xe chạy 24 giờ), phí hủy vé 10%.</p>
                             </div>
                             <div class="row">
-                                <p>(*) Nếu quý khách có nhu cầu trung chuyển, vui lòng liên hệ số điện thoại <b style="color: #ba2f25;">1900 2082</b> trước khi đặt vé. Chúng tôi không đón/trung chuyển tại những điểm xe trung chuyển không thể tới được.</p>
+                                <p>(*) Nếu quý khách có nhu cầu trung chuyển, vui lòng liên hệ số điện thoại <b
+                                        style="color: #ba2f25;">1900 2082</b> trước khi đặt vé. Chúng tôi không
+                                    đón/trung chuyển tại những điểm xe trung chuyển không thể tới được.</p>
                             </div>
                         </div>
                     </div>
@@ -69,7 +81,7 @@ include('header.php');
 
             </div>
         </div>
-</form>
+    </form>
 </div>
 
 <script>

@@ -12,10 +12,12 @@ include("connect.php");
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="TemplateMo">
+
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
         rel="stylesheet">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo-icon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <title>Hệ thống Xe ABC</title>
+   
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="assets/css/fontawesome.css">
@@ -53,10 +55,9 @@ include("connect.php");
                 </div>
                 <div class="col-md-4">
                     <ul class="right-icons">
-                        <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                        <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
-                        <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                        <li><a href="https://www.facebook.com/profile.php?id=100009120025858"><i class="fa fa-facebook"></i></a></li>
+                        <li><a href="https://www.facebook.com/photo.php?fbid=987626782189441&set=pb.100028263850391.-2207520000.&type=3git"><i class="fa fa-twitter"></i></a></li>
+
                     </ul>
                 </div>
             </div>

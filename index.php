@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="EN">
-
+<title>Trang chủ - Hệ thống xe ABC</title>
 <?php
 include("header.php");
 ?>
@@ -9,8 +9,10 @@ include("header.php");
 <form action="datve.php" method="post" class="container border rounded shadow mt-5 mb-5">
     <!-- Cái khung, bo gốc -->
     <div class=" mt-5 ml-5 mb-3 pl-5 " style="font-size: larger;">
-        <input type="radio" name="loaidi" id="motchieu" checked onchange="document.getElementById('ngayve').disabled = true;"> Một chiều
-        <input type="radio" name="loaidi" id="khuhoi" class="ml-5" onchange="document.getElementById('ngayve').disabled = false;"> Khứ hồi
+        <input type="radio" name="loaidi" id="motchieu" checked
+            onchange="document.getElementById('ngayve').disabled = true;"> Một chiều
+        <input type="radio" name="loaidi" id="khuhoi" class="ml-5"
+            onchange="document.getElementById('ngayve').disabled = false;"> Khứ hồi
     </div>
     <div class="border1 mb-5 ml-5 shadow-lg p-5">
         <!-- Nhớ xóa border -->
@@ -133,7 +135,8 @@ include("header.php");
                     </div>
                 </div>
             </div>
-            <button class="snip1339 " style="float: right;" id="find-flight" type="submit" name="action" value="timChuyenXe">Tìm chuyến xe</button>
+            <button class="snip1339 " style="float: right;" id="find-flight" type="submit" name="action"
+                value="timChuyenXe">Tìm chuyến xe</button>
         </div>
 
     </div>
@@ -177,16 +180,16 @@ include("header.php");
                         <img class="img" src="assets/images/NhaTrang.jpg" style="max-width: 200px;" alt="">
                     </div>
                     <div>
-                    <h5 class="text21 font-weight-bold ">Sài Gòn ⇒ Nha Trang</h5>
-                    <div class="text23">
-                        <div data-v-15bcc412="" class="details">
-                            <span>450.000đ &emsp;&emsp;&emsp;</span>
-                            <p class="fa fa-clock-o icon "></p>
-                            9h &emsp;&emsp;&emsp;
-                            <p class="fa fa-map-marker icon"></p>
-                            275km
+                        <h5 class="text21 font-weight-bold ">Sài Gòn ⇒ Nha Trang</h5>
+                        <div class="text23">
+                            <div data-v-15bcc412="" class="details">
+                                <span>450.000đ &emsp;&emsp;&emsp;</span>
+                                <p class="fa fa-clock-o icon "></p>
+                                9h &emsp;&emsp;&emsp;
+                                <p class="fa fa-map-marker icon"></p>
+                                275km
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </div>
             </button>
@@ -227,22 +230,22 @@ include("header.php");
                         <img class="img" src="assets/images/CanTho.jpg" style="max-width: 200px;" alt="">
                     </div>
                     <div>
-                    <h5 class="text22 font-weight-bold ">Sài Gòn ⇒ Cần Thơ</h5>
-                    <div class="text23">
-                        <div data-v-15bcc412="" class="details ">
-                            <span>165.000đ &emsp;&emsp;&emsp;</span>
-                            <p class="fa fa-clock-o icon "></p>
-                            4h &emsp;&emsp;&emsp;
-                            <p class="fa fa-map-marker icon"></p>
-                            190km
+                        <h5 class="text22 font-weight-bold ">Sài Gòn ⇒ Cần Thơ</h5>
+                        <div class="text23">
+                            <div data-v-15bcc412="" class="details ">
+                                <span>165.000đ &emsp;&emsp;&emsp;</span>
+                                <p class="fa fa-clock-o icon "></p>
+                                4h &emsp;&emsp;&emsp;
+                                <p class="fa fa-map-marker icon"></p>
+                                190km
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </div>
             </button>
         </form>
     </div>
-    
+
     <!-- Dòng 3 -->
     <div class="row">
         <!-- Ô đầu  -->
@@ -306,16 +309,16 @@ include("header.php");
                         <img class="img" src="assets/images/ChauDoc.jpg" style="max-width: 200px;" alt="">
                     </div>
                     <div>
-                    <h5 class="text21 font-weight-bold ">Sài Gòn ⇒ Châu Đốc</h5>
-                    <div class="text23">
-                        <div data-v-15bcc412="" class="details ">
-                            <span>175.000đ &emsp;&emsp;&emsp;</span>
-                            <p class="fa fa-clock-o icon "></p>
-                            6h &emsp;&emsp;&emsp;
-                            <p class="fa fa-map-marker icon"></p>
-                            240km
+                        <h5 class="text21 font-weight-bold ">Sài Gòn ⇒ Châu Đốc</h5>
+                        <div class="text23">
+                            <div data-v-15bcc412="" class="details ">
+                                <span>175.000đ &emsp;&emsp;&emsp;</span>
+                                <p class="fa fa-clock-o icon "></p>
+                                6h &emsp;&emsp;&emsp;
+                                <p class="fa fa-map-marker icon"></p>
+                                240km
+                            </div>
                         </div>
-                    </div>
                     </div>
                 </div>
             </button>
@@ -363,34 +366,36 @@ include("header.php");
                 <div class="owl-partners owl-carousel">
 
                     <div class="partner-item hinh">
-                        <a href="https://vinpearl.com/vi/ben-ninh-kieu-can-tho-co-gi-thu-vi-kinh-nghiem-an-choi-sieu-chi-tiet">
+                        <a
+                            href="https://vinpearl.com/vi/ben-ninh-kieu-can-tho-co-gi-thu-vi-kinh-nghiem-an-choi-sieu-chi-tiet">
                             <img src="assets/images/CanTho.jpg" title="Cần Thơ" alt="Cần Thơ">
                         </a>
 
-                        
+
                     </div>
 
                     <div class="partner-item hinh">
                         <a href="https://camautourism.vn/">
-                        <img src="assets/images/CaMau.jpg" title="Cà Mau" alt="Cà Mau">
+                            <img src="assets/images/CaMau.jpg" title="Cà Mau" alt="Cà Mau">
                         </a>
                     </div>
 
                     <div class="partner-item hinh">
                         <a href="https://vinpearl.com/vi/50-dia-diem-du-lich-da-nang-hap-dan-nhat-ban-tha-ho-lua-chon">
-                        <img src="assets/images/DaNang.jpg" title="Đà Nẵng" alt="Đà Nẵng">
+                            <img src="assets/images/DaNang.jpg" title="Đà Nẵng" alt="Đà Nẵng">
                         </a>
                     </div>
 
                     <div class="partner-item hinh">
                         <a href="https://www.vntrip.vn/cam-nang/dia-diem-du-lich-nha-trang-303">
-                        <img src="assets/images/NhaTrang.jpg" title="Nha Trang" alt="Nha Trang">
+                            <img src="assets/images/NhaTrang.jpg" title="Nha Trang" alt="Nha Trang">
                         </a>
                     </div>
 
                     <div class="partner-item hinh">
-                        <a href="https://vinpearl.com/vi/toplist-23-dia-diem-du-lich-sai-gon-nghe-la-muon-xach-balo-len-va-di">
-                        <img src="assets/images/SaiGon.jpg" title="Sài Gòn" alt="Sài Gòn">
+                        <a
+                            href="https://vinpearl.com/vi/toplist-23-dia-diem-du-lich-sai-gon-nghe-la-muon-xach-balo-len-va-di">
+                            <img src="assets/images/SaiGon.jpg" title="Sài Gòn" alt="Sài Gòn">
                         </a>
                     </div>
 
@@ -408,7 +413,8 @@ include("header.php");
                 <h4>Kết nối với chúng tôi</h4>
                 <ul class="social-icons">
                     <h3 style=" color: #EE6D4A; font-size: 40px; font-weight: 700;">1900 2082</h3>
-                    <li><a rel="nofollow" href="https://fb.com/templatemo" target="_blank"><i class="fa fa-facebook"></i></a>
+                    <li><a rel="nofollow" href="https://fb.com/templatemo" target="_blank"><i
+                                class="fa fa-facebook"></i></a>
                     </li>
                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                     <li><a href="#"><i class="fa fa-linkedin"></i></a></li>
@@ -416,7 +422,8 @@ include("header.php");
                 </ul>
                 <p>
                     Địa chỉ:
-                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Địa chỉ:Trần Quang Khải, P.Cái Khế, Q.Ninh Kiều, TP.Cần Thơ" target="_blank" class="address">102abc, Trần Quang Khải, P.Cái Khế, Q.Ninh Kiều, TP.Cần
+                    <a href="https://www.google.com/maps/search/?api=1&amp;query=Địa chỉ:Trần Quang Khải, P.Cái Khế, Q.Ninh Kiều, TP.Cần Thơ"
+                        target="_blank" class="address">102abc, Trần Quang Khải, P.Cái Khế, Q.Ninh Kiều, TP.Cần
                         Thơ</a>
                 </p>
                 <p>
@@ -484,14 +491,14 @@ include("header.php");
 <script src="assets/js/accordions.js"></script>
 
 <script language="text/Javascript">
-    cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
-    function clearField(t) { //declaring the array outside of the
-        if (!cleared[t.id]) { // function makes it static and global
-            cleared[t.id] = 1; // you could use true and false, but that's more typing
-            t.value = ''; // with more chance of typos
-            t.style.color = '#fff';
-        }
+cleared[0] = cleared[1] = cleared[2] = 0; //set a cleared flag for each field
+function clearField(t) { //declaring the array outside of the
+    if (!cleared[t.id]) { // function makes it static and global
+        cleared[t.id] = 1; // you could use true and false, but that's more typing
+        t.value = ''; // with more chance of typos
+        t.style.color = '#fff';
     }
+}
 </script>
 
 </body>

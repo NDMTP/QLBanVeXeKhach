@@ -16,7 +16,7 @@ session_start();
     <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
-    <title>Trang cá nhân</title>
+    <title>Đổi mật khẩu</title>
 
 
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -122,73 +122,30 @@ session_start();
                 <!-- hien thi thong tin nguoi dung-->
 
                 <div class="container">
-                    <form action="updateuser.php" method="POST" class="formuser">
-                        <h2>Thông tin tài khoản</h2>
+                    <form action="updatemk.php" method="POST" class="formuser" name="sbf">
+                        <h2 class="m-4">Đổi Mật Khẩu</h2>
                         <div class="row">
                             <div class="col-6">
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Tên</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput2"
-                                        value="<?php echo $_SESSION["name"] ?>" name="ten">
+                                    <label for="exampleFormControlInput1" class="form-label">Mật Khẩu mới</label>
+                                    <input type="password" class="form-control" id="exampleFormControlInput2"
+                                        name="psw">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Số điện thoại </label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput3"
-                                        value="<?php echo $_SESSION["sdt"] ?>" name="sdt">
+                                    <label for="exampleFormControlInput1" class="form-label">Mật Khẩu nhập lại</label>
+                                    <input type="password" class="form-control" id="exampleFormControlInput2"
+                                        name="psw1">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Địa Chỉ</label>
-                                    <input type="text" class="form-control" id="exampleFormControlInput1"
-                                        value="<?php echo $_SESSION["diachi"] ?>" name="diachi">
+                                    <label for="exampleFormControlInput1" class="form-label">Mật Khẩu cũ</label>
+                                    <input type="password" class="form-control" id="exampleFormControlInput2"
+                                        name="psw2">
                                 </div>
-
                             </div>
 
-                            <div class="col-6">
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Email
-                                        <br>
-                                        <?php echo $_SESSION["email"]?>
-                                    </label>
 
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Ngày sinh</label>
-                                    <input type="date" class="form-control" id="exampleFormControlInput4"
-                                        value="<?php echo $_SESSION["ngaysinh"]?>" name="ngaysinh">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="exampleFormControlInput1" class="form-label">Giới tính</label>
-
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gioitinh"
-                                            id="flexRadioDefault1" value="nam">
-                                        <label class="form-check-label" for="flexRadioDefault1">
-                                            Nam
-                                        </label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="gioitinh"
-                                            id="flexRadioDefault2" checked value="nu">
-                                        <label class="form-check-label" for="flexRadioDefault2">
-                                            Nữ
-                                        </label>
-                                    </div>
-
-                                </div>
-
-
-                            </div>
                         </div>
-                        <!----->
-                        <!-- Button trigger modal -->
-                        <button type="submit" class="btn btn-primary" data-bs-toggle="modal"
-                            data-bs-target="#exampleModal" name="sb">
-                            Gửi
-                        </button>
-
-
-
+                        <input type="submit" value="Lưu" class="saveform" name="sbpsw">
                     </form>
                 </div>
 
