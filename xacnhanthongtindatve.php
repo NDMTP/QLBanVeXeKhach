@@ -21,11 +21,17 @@ include('header.php');
                         echo '<p><b style="color: #ba2f25;">Họ tên hành khách: </b>' . $_SESSION["name"] . '</p>';
                         echo '<p><b style="color: #ba2f25;">Số điện thoại: </b>' . $_SESSION["sdt"] . '</p>';
                         echo '<p><b style="color: #ba2f25;">Email: </b>' . $_SESSION["email"] . '</p>';
-                        echo '<p><b style="color: #ba2f25;">Chuyến xe: </b>' . $_SESSION["tenchuyenxe"] . '</p>';
+                        if($_SESSION["khuhoi"] == 1){
+                            echo '<p><b style="color: #ba2f25;">Chuyến xe: </b>' . $_SESSION["tenchuyenxe"] .', '. $_SESSION["tenchuyenkhuhoi"] . '</p>';
+                            echo '<p><b style="color: #ba2f25;">Loại vé: </b> Khứ hồi</p>';
+                        }else{
+                            echo '<p><b style="color: #ba2f25;">Loại vé: </b> Một chiều</p>';
+                            echo '<p><b style="color: #ba2f25;">Chuyến xe: </b>' . $_SESSION["tenchuyenxe"] .'</p>';
+                        }
                         echo '<p><b style="color: #ba2f25;">Thời gian khởi hành: </b>' . $_SESSION["thoigiankhoihanh"] . '</p>';
                         echo '<p><b style="color: #ba2f25;">Số lượng ghế: </b>' . $_SESSION["tongsove"] . '</p>';
                         echo '<p><b style="color: #ba2f25;">Tên ghế: </b>' . $StringTenViTri . '</p>';
-                        echo '<p><b style="color: #ba2f25;">Tổng số tiền: </b>' . $_SESSION['tongsotien'] . '.000đ</p>';
+                        echo '<p><b style="color: #ba2f25;">Tổng số tiền: </b>' . number_format($_SESSION['tongsotien'] . "000", 0, ',', '.') . 'đ</p>';
                         echo '<p><b style="color: #ba2f25;">Điểm lên xe: </b>' . $row["TENBEN"] . '</p>';
                         echo '<br>';
                         echo '<p><input type="checkbox" required> Chấp nhận <b style="color: #ba2f25;">điều khoản đặt vé</b> của Xe Khách ABC</p>';
@@ -56,15 +62,22 @@ include('header.php');
         </div>
         <div class="row border shadow border-top-0 pb-5" style="border-radius: 0 0 15px 15px; background-color:white;">
             <div class="col-md-6">
-                <button class="btn btn-outline-secondary mr-4 p-2" style="width: 50%; float: right;" type="submit" name="action" value="quayve">QUAY VỀ</button>
+                <button class="btn btn-outline-secondary mr-4 p-2" style="width: 50%; float: right;" onclick="history.back()">QUAY VỀ</button>
             </div>
             <div class="col-md-6">
-                    <button class="btn btn-info p-2" style="width: 50%;" type="submit" name="action" value="xacnhan">XÁC NHẬN</button>
+                <button class="btn btn-info p-2" style="width: 50%;" type="submit" name="action" value="xacnhan">XÁC NHẬN</button>
 
             </div>
         </div>
 </form>
 </div>
+
+<script>
+    function getback(){
+        history.back();
+    }
+</script>
+
 
 <?php
 include('footer.php');

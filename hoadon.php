@@ -112,18 +112,24 @@
                   <table id="myTable" class="display" class="table align-items-center mb-0">
                     <thead>
                       <tr class="col-12">
+                      <th
+                          class="col-2 text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                          Tên phiếu</th>
                         <th
-                          class="col-4 text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                          class="col-3 text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                           Tên chuyến xe</th>
                         <th
-                          class="col-4 text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
-                          Thời điểm đi thực tế</th>
+                          class="col-2 text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                          Thời điểm đi</th>
                         <th
                           class="col-3 text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                           Ngày lập hóa đơn</th>
-                        <th
+                          <th
                           class="col-1 text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                           Giá</th>
+                          <th
+                          class="col-1 text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                        </th>
                       </tr>
                     </thead>
                     <tbody>
@@ -131,7 +137,7 @@
 
                       <?php
                       //tao chuoi luu cau lenh sql
-                      $sql = "SELECT chuyenxe.TENCHUYENXE, chuyenxe.THOIDIEMDITT, phieudatve.NGAYLAP, tuyenxe.GIAHIENHANH
+                      $sql = "SELECT DISTINCT phieudatve.MAPHIEU, chuyenxe.TENCHUYENXE, chuyenxe.THOIDIEMDITT, phieudatve.NGAYLAP, tuyenxe.GIAHIENHANH
                               FROM vexe
                               INNER JOIN phieudatve ON vexe.MAPHIEU = phieudatve.MAPHIEU
                               INNER JOIN khachhang ON phieudatve.EMAIL = khachhang.EMAIL
@@ -148,58 +154,53 @@
 
                       if ($result->num_rows > 0) {
 
-
-
-
-
-                        //Cach 3: trinh bay voi bang html
-                        //load du lieu moi len dua vao bien result
                         $result = $conn->query($sql);
                         $result_all = $result->fetch_all();
 
                         foreach ($result_all as $row) {
                       ?>
-                      <tr>
-                        <td class="align-middle text-center">
-                          <!-- ma hd -->
-
-
-                          <?php echo $row[0] ?>
-                        </td>
-                        <td class="align-middle text-center">
-                          <!-- ngayhoanthanh -->
-
-                          <?php echo $row[1] ?>
-
-
-                        </td>
-                        <td class="align-middle text-center">
-                          <!-- soluong -->
-
-                          <?php echo $row[2] ?>
-
-
-                        </td>
-
-                        <!-- phuong thuc thanh toan -->
-                        <td class="align-middle text-xs text-center">
-
-                          <?php
-
-                              $number = $row[3];
-                              $formatted_number = number_format($number, 3);
-                              echo $formatted_number;
-                              ?>
-
-                        </td>
-
-                        <td class="align-middle text-success text-center">
-                          <!-- tongtien -->
-
-
-
-                        </td>
-                      </tr>
+                      <form action="xoahoadon.php" method="post">
+                        <tr>
+                          <td class="align-middle text-center">
+                            <!-- ma hd -->
+                            <?php echo $row[0];
+                              echo '<input type="text" name="idphieu" value="'.$row[0].'" style="display: none;">';
+                            ?>
+                          </td>
+                          <td class="align-middle text-center">
+                            <!-- ngayhoanthanh -->
+                            <?php echo $row[1] ?>
+                          </td>
+                          <td class="align-middle text-center">
+                            <!-- soluong -->
+                            <?php echo $row[2] ?>
+                          </td>
+                          <td class="align-middle text-xs text-center">
+                            <?php echo $row[3] ?>
+                          </td>
+                          <!-- phuong thuc thanh toan -->
+                          <td class="align-middle text-xs text-center">
+  
+                            <?php
+  
+                                $number = $row[4];
+                                $formatted_number = number_format($number, 3);
+                                echo $formatted_number;
+                                ?>
+  
+                          </td>
+                          <td class="align-middle text-xs text-center">
+                            <button type="submit" name="action" value="xoaChuyen" class="text-danger border-0 bg-transparent" style="cursor: pointer;"></i></i><b style="font-size: large;">☒</b></button>
+                          </td>
+  
+                          <td class="align-middle text-success text-center">
+                            <!-- tongtien -->
+  
+  
+  
+                          </td>
+                        </tr>
+                      </form>
                       <?php
                         }
                       }
@@ -215,13 +216,15 @@
                         <td>
                         </td>
                         <div style="margin-top: 10px;">
+                        <td></td>
                           <td style="text-align: right">
-                            <b> Tổng tiền <b>
+                            <br>
+                            <b> Tổng tiền: <b>
                           </td>
 
                           <td style="text-align: center;">
+                            <br>
                             <?php
-
                             $number = $tongve;
                             $formatted_number = number_format($number, 3);
                             echo $formatted_number;

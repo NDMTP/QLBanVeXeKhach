@@ -282,13 +282,14 @@ include("header.php");
             }else{
                 $direct = 'taikhoan.php';
             }
-            $sql = "SELECT *, bxdi.TENBEN TENBENDI, bxden.TENBEN TENBENDEN FROM chuyenxe c, tuyenxe a, benxe bxdi, benxe bxden, quanhuyen qhdi, quanhuyen qhden , tinhthanh ttdi, tinhthanh ttden, xe x, loaixe lx
+            $sql = "SELECT *, bxdi.TENBEN TENBENDI, bxden.TENBEN TENBENDEN, bxdi.MABX IDBENDI, bxden.MABX IDBENDEN FROM chuyenxe c, tuyenxe a, benxe bxdi, benxe bxden, quanhuyen qhdi, quanhuyen qhden , tinhthanh ttdi, tinhthanh ttden, xe x, loaixe lx
                 WHERE c.ID_TUYEN = a.ID_TUYEN
                 AND a.MABX = bxdi.MABX AND a.BEN_MABX = bxden.MABX 
                 AND bxdi.MAQUANHUYEN = qhdi.MAQUANHUYEN AND bxden.MAQUANHUYEN = qhden.MAQUANHUYEN
                 AND qhdi.MATINH = ttdi.MATINH AND qhden.MATINH = ttden.MATINH
                 AND c.BIENSO = x.BIENSO AND x.ID_LOAI = lx.ID_LOAI
-                AND ttdi.MATINH = '" . $diemdi . "' AND ttden.MATINH = '" . $diemden . "'";
+                AND ttdi.MATINH = '" . $diemdi . "' AND ttden.MATINH = '" . $diemden . "'
+                AND c.TGDUKIENKHOIHANH like '".$ngaydi."%'" ;
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
                 echo '<div id="chuyenxe_item">';
@@ -329,6 +330,8 @@ include("header.php");
                     echo 'Ngày dự kiến đến: ' . substr($row["TGDUKIENDEN"], 0, 10);
                     echo '<div class = "biensoxe" style="display:none;">' . $row["BIENSO"] . '</div>';
                     echo '<div class = "idchuyenxe" style="display:none;">' . $row["ID_CHUYENXE"] . '</div>';
+                    echo '<div class = "idbendi" style="display:none;">' . $row["IDBENDI"] . '</div>';
+                    echo '<div class = "idbenden" style="display:none;">' . $row["IDBENDEN"] . '</div>';
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
@@ -412,7 +415,7 @@ include("header.php");
             var mabenden = makeNull(document.getElementById("benden").value);
             var matinhdi = makeNull(document.getElementById("diemdi").value);
             var matinhden = makeNull(document.getElementById("diemden").value);
-
+            var ngaydi = document.getElementById("ngaydi").value;
             var xmlhttp = new XMLHttpRequest();
 
             xmlhttp.onreadystatechange = function() {
@@ -425,7 +428,7 @@ include("header.php");
                 }
             };
 
-            xmlhttp.open("GET", "datve_function.php?function=ajaxchuyenxe&maquanhuyendi=" + maquanhuyendi + "&maquanhuyenden=" + maquanhuyenden + "&mabendi=" + mabendi + "&mabenden=" + mabenden + "&matinhdi=" + matinhdi + "&matinhden=" + matinhden, true);
+            xmlhttp.open("GET", "datve_function.php?function=ajaxchuyenxe&maquanhuyendi=" + maquanhuyendi + "&maquanhuyenden=" + maquanhuyenden + "&mabendi=" + mabendi + "&mabenden=" + mabenden + "&matinhdi=" + matinhdi + "&matinhden=" + matinhden+ "&ngaydi=" + ngaydi, true);
             xmlhttp.send();
 
             document.getElementById("chuyenxe_item").remove();
@@ -471,6 +474,15 @@ include("header.php");
             idvitri = [];
             var biensoxe = event.target.closest('.container').querySelector('.biensoxe').textContent;
             var idchuyenxe = event.target.closest('.container').querySelector('.idchuyenxe').textContent;
+            var idbendi = event.target.closest('.container').querySelector('.idbendi').textContent;
+            var idbenden = event.target.closest('.container').querySelector('.idbenden').textContent;
+            var ngayve = document.getElementById("ngayve").value;
+            var khuhoiRadioButton = document.getElementById("khuhoi");
+            if (khuhoiRadioButton.checked) {
+                var khuhoi = 1;
+            } else {
+                var khuhoi = 0;
+            }
             /////////////
             var codeDiv = event.target.closest('.container').querySelector('.show_tableghe');
             var xmlhttp = new XMLHttpRequest();
@@ -479,7 +491,7 @@ include("header.php");
                     codeDiv.innerHTML = this.responseText;
                 }
             };
-            xmlhttp.open("GET", "datve_function.php?function=get_tableghe&biensoxe=" + biensoxe + "&idchuyenxe=" + idchuyenxe, true);
+            xmlhttp.open("GET", "datve_function.php?function=get_tableghe&biensoxe=" + biensoxe + "&idchuyenxe=" + idchuyenxe + "&idbendi=" + idbendi + "&idbenden=" + idbenden + "&ngayve=" + ngayve + "&khuhoi=" + khuhoi, true);
             xmlhttp.send();
             var allRadios = document.querySelectorAll('.selectChuyenXe');
             for (var i = 0; i < allRadios.length; i++) {
@@ -502,7 +514,6 @@ include("header.php");
                 tenvitri.push(tenVitri);
                 idvitri.push(idVitri);
                 $(button).removeClass('btn-info').addClass('btn-danger');
-                
             } else {
                 sumTicket--;
                 tenvitri.pop();
@@ -510,9 +521,10 @@ include("header.php");
                 $(button).removeClass('btn-danger').addClass('btn-info');
             }
             var money = (sumTicket*nowmoney).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+
             document.getElementById("sumticket").innerHTML = "Tổng số vé: "+sumTicket+" vé";
             document.getElementById("summoney").innerHTML = "Tổng tiền: "+money.slice(0,-2)+".000đ";
-
+            
             $.ajax({
                 url: "datve_function.php",
                 type: "POST",

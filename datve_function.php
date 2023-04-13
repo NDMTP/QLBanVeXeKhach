@@ -117,10 +117,11 @@ if (isset($_GET["function"]) && $_GET["function"] == "ajaxchuyenxe") {
     $mabenden = $_GET["mabenden"];
     $matinhdi = $_GET["matinhdi"];
     $matinhden = $_GET["matinhden"];
-    echo chuyenxe_Filter($maquanhuyendi, $maquanhuyenden, $mabendi, $mabenden, $matinhdi, $matinhden);
+    $ngaydi = $_GET["ngaydi"];
+    echo chuyenxe_Filter($maquanhuyendi, $maquanhuyenden, $mabendi, $mabenden, $matinhdi, $matinhden, $ngaydi);
 }
 
-function chuyenxe_Filter($maquanhuyendi, $maquanhuyenden, $mabendi, $mabenden, $matinhdi, $matinhden)
+function chuyenxe_Filter($maquanhuyendi, $maquanhuyenden, $mabendi, $mabenden, $matinhdi, $matinhden, $ngaydi)
 {
     $conn = connect();
     if(isset($_SESSION["email"])){
@@ -128,7 +129,7 @@ function chuyenxe_Filter($maquanhuyendi, $maquanhuyenden, $mabendi, $mabenden, $
     }else{
         $direct = 'taikhoan.php';
     }
-    $sql = "SELECT *, bxdi.TENBEN TENBENDI, bxden.TENBEN TENBENDEN FROM chuyenxe c, tuyenxe a, benxe bxdi, benxe bxden, quanhuyen qhdi, quanhuyen qhden , tinhthanh ttdi, tinhthanh ttden, xe x, loaixe lx
+    $sql = "SELECT *, bxdi.TENBEN TENBENDI, bxden.TENBEN TENBENDEN, bxdi.MABX IDBENDI, bxden.MABX IDBENDEN FROM chuyenxe c, tuyenxe a, benxe bxdi, benxe bxden, quanhuyen qhdi, quanhuyen qhden , tinhthanh ttdi, tinhthanh ttden, xe x, loaixe lx
         WHERE c.ID_TUYEN = a.ID_TUYEN
         AND a.MABX = bxdi.MABX AND a.BEN_MABX = bxden.MABX
         AND bxdi.MAQUANHUYEN = qhdi.MAQUANHUYEN AND bxden.MAQUANHUYEN = qhden.MAQUANHUYEN
@@ -136,7 +137,8 @@ function chuyenxe_Filter($maquanhuyendi, $maquanhuyenden, $mabendi, $mabenden, $
         AND c.BIENSO = x.BIENSO AND x.ID_LOAI = lx.ID_LOAI
         AND ttdi.MATINH = '" . $matinhdi . "' AND ttden.MATINH = '" . $matinhden . "'
         AND qhdi.MAQUANHUYEN like '%" . $maquanhuyendi . "%' AND qhden.MAQUANHUYEN like '%" . $maquanhuyenden . "%'
-        AND bxdi.MABX like '%" . $mabendi . "%' AND bxden.MABX like '%" . $mabenden . "%'";
+        AND bxdi.MABX like '%" . $mabendi . "%' AND bxden.MABX like '%" . $mabenden . "%'
+        AND c.TGDUKIENKHOIHANH like '".$ngaydi."%'";
     $result = mysqli_query($conn, $sql);
     if (mysqli_num_rows($result) > 0) {
         echo '<div id="chuyenxe_item">';
@@ -177,6 +179,8 @@ function chuyenxe_Filter($maquanhuyendi, $maquanhuyenden, $mabendi, $mabenden, $
             echo 'Ngày dự kiến đến: ' . substr($row["TGDUKIENDEN"], 0, 10);
             echo '<div class = "biensoxe" style="display:none;">' . $row["BIENSO"] . '</div>';
             echo '<div class = "idchuyenxe" style="display:none;">' . $row["ID_CHUYENXE"] . '</div>';
+            echo '<div class = "idbendi" style="display:none;">' . $row["IDBENDI"] . '</div>';
+            echo '<div class = "idbenden" style="display:none;">' . $row["IDBENDEN"] . '</div>';
             echo '</div>';
             echo '</div>';
             echo '</div>';
@@ -209,6 +213,30 @@ function chuyenxe_Filter($maquanhuyendi, $maquanhuyenden, $mabendi, $mabenden, $
 if (isset($_GET["function"]) && $_GET["function"] == "get_tableghe") {
     $biensoxe = $_GET["biensoxe"];
     $idchuyenxe = $_GET["idchuyenxe"];
+    $idbendi = $_GET["idbendi"];
+    $idbenden = $_GET["idbenden"];
+    $ngayve = $_GET["ngayve"];
+    $khuhoi = $_GET["khuhoi"];
+    $_SESSION["khuhoi"] = $khuhoi;
+    if($khuhoi == 1){
+        $conn = connect();
+        $chuyenkhuhoi = "SELECT *, bxdi.TENBEN TENBENDI, bxden.TENBEN TENBENDEN, bxdi.MABX IDBENDI, bxden.MABX IDBENDEN FROM chuyenxe c, tuyenxe a, benxe bxdi, benxe bxden, quanhuyen qhdi, quanhuyen qhden , tinhthanh ttdi, tinhthanh ttden, xe x, loaixe lx
+        WHERE c.ID_TUYEN = a.ID_TUYEN
+        AND a.MABX = bxdi.MABX AND a.BEN_MABX = bxden.MABX
+        AND bxdi.MAQUANHUYEN = qhdi.MAQUANHUYEN AND bxden.MAQUANHUYEN = qhden.MAQUANHUYEN
+        AND qhdi.MATINH = ttdi.MATINH AND qhden.MATINH = ttden.MATINH
+        AND c.BIENSO = x.BIENSO AND x.ID_LOAI = lx.ID_LOAI
+        AND bxdi.MABX = '" . $idbenden . "' AND bxden.MABX = '" . $idbendi . "'
+        AND c.TGDUKIENKHOIHANH like '".$ngayve."%'";
+
+        $kqtimchuyen = mysqli_query($conn, $chuyenkhuhoi);
+        if (mysqli_num_rows($kqtimchuyen) > 0) {
+            $chuyenkhuhoi = mysqli_fetch_assoc($kqtimchuyen);
+            $_SESSION["idchuyenkhuhoi"] = $chuyenkhuhoi["ID_CHUYENXE"];
+            $_SESSION["tenchuyenkhuhoi"] = $chuyenkhuhoi["TENCHUYENXE"];
+        }
+    }
+
     $_SESSION["idchuyenxe"] = $idchuyenxe;
     echo get_TableGhe($biensoxe, $idchuyenxe);
 }
@@ -275,7 +303,7 @@ function get_TableGhe($biensoxe, $idchuyenxe)
             echo '<tr>';
             for ($j = 1; $j <= 3; $j++) {
                 if ($row = mysqli_fetch_assoc($result)) {
-                    $isBook = "SELECT COUNT(ID_VE) COCHO FROM vexe WHERE vexe.ID_VITRI = '".$row["ID_VITRI"]."'";
+                    $isBook = "SELECT COUNT(ID_VE) COCHO FROM vexe WHERE vexe.ID_VITRI = '".$row["ID_VITRI"]."' AND vexe.ID_CHUYENXE = '".$idchuyenxe."'";
                     $resultBook = mysqli_query($conn, $isBook);
                     $checkBook = mysqli_fetch_assoc($resultBook);
                     if($checkBook["COCHO"]>0){
@@ -340,7 +368,7 @@ function get_TableGhe($biensoxe, $idchuyenxe)
     echo '<b class="text-dark" id="summoney">Tổng tiền: 0.000đ</b></div>';
     echo '</div>';
     echo '<div class="row">';
-    echo '<button class="snip1339" style="width: 70%; " id="bookticket" name>Đặt vé</button>';
+    echo '<button class="snip1339" style="width: 70%; " id="bookticket">Đặt vé</button>';
     echo '</div>';
     echo '</div>';
     echo '</div>';
@@ -350,8 +378,12 @@ function get_TableGhe($biensoxe, $idchuyenxe)
 //LẤY THÔNG TIN THANH TOÁN GHẾ
 
 if (isset($_POST['sumTicket']) && isset($_POST['money'])) {
+    if($_SESSION["khuhoi"] == 1){
+        $_SESSION['tongsotien'] = $_POST['money']*2;
+    }else{
+        $_SESSION['tongsotien'] = $_POST['money'];
+    }
     $_SESSION['tongsove'] = $_POST['sumTicket'];
-    $_SESSION['tongsotien'] = $_POST['money'];
     $_SESSION['idvitri'] = $_POST['idVitri'];
     $_SESSION['tenvitri'] = $_POST['tenVitri'];
 }
