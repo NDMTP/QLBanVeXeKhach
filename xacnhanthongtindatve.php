@@ -88,19 +88,19 @@ include('header.php');
 
                         <!-- Nội dung hộp thoại -->
                         <div class="modal-body">
-                            <input type="text" class="form-control" name="bank-code" placeholder="Nhập số tài khoản">
+                            <input type="text" class="form-control" name="bank_code" id="bank_code" placeholder="Nhập số tài khoản">
 
-                            <?php 
-                                $sql = "SELECT * FROM nganhang";
-                                $result = mysqli_query($conn, $sql);
-                                echo '<select class="form-control mt-3 mb-3" name="idbank">';
-                                echo '<option selected text-muted>Chọn ngân hàng</option>';
-                                if (mysqli_num_rows($result) > 0) {
-                                    while ($row = mysqli_fetch_assoc($result)) {
-                                        echo '<option value="' . $row["MaNganHang"] . '">' . $row["TenNganHang"] . '</option>';
-                                    }
+                            <?php
+                            $sql = "SELECT * FROM nganhang";
+                            $result = mysqli_query($conn, $sql);
+                            echo '<select class="form-control mt-3 mb-3" name="idbank" id="idbank">';
+                            echo '<option selected text-muted>Chọn ngân hàng</option>';
+                            if (mysqli_num_rows($result) > 0) {
+                                while ($row = mysqli_fetch_assoc($result)) {
+                                    echo '<option value="' . $row["MaNganHang"] . '">' . $row["TenNganHang"] . '</option>';
                                 }
-                                echo '</select>';
+                            }
+                            echo '</select>';
                             ?>
                             <p><input type="checkbox" required> Chấp nhận <b style="color: #ba2f25;">điều khoản đặt vé</b> của Xe Khách ABC</p>
                         </div>
@@ -108,7 +108,7 @@ include('header.php');
                         <!-- Chân hộp thoại -->
                         <div class="modal-footer">
                             <button type="button" class="btn btn-secondary" data-dismiss="modal">Đóng</button>
-                            <button class="btn btn-info" type="submit" name="action" value="xacnhan">Xác nhận</button>
+                            <button class="btn btn-info" type="submit" name="action" value="xacnhan" id="bank_confirm">Xác nhận</button>
                         </div>
 
                     </div>
@@ -122,6 +122,24 @@ include('header.php');
     function getback() {
         history.back();
     }
+
+    document.getElementById('bank_confirm').addEventListener('click', function(event) {
+        event.preventDefault();
+        var bank_id = document.getElementById('idbank').value;
+        var bank_code = document.getElementById('bank_code').value;
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                if (this.responseText == 1) {
+                    window.location.href = 'phieudatve.php?action=xacnhan';
+                }else {
+                    alert('Thông tin không chính xác!');
+                }
+            }
+        };
+        xmlhttp.open("GET", "datve_function.php?function=checkBank&bank_id=" + bank_id + "&bank_code=" + bank_code, true);
+        xmlhttp.send();
+    });
 </script>
 
 

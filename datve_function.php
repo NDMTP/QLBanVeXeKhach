@@ -391,3 +391,24 @@ if (isset($_POST['sumTicket']) && isset($_POST['money'])) {
 }
 
 
+//KIỂM TRA BANK
+
+if (isset($_GET["function"]) && $_GET["function"] == "checkBank") {
+    $bank_id = $_GET["bank_id"];
+    $bank_code = $_GET["bank_code"];
+    echo check_bank($bank_id, $bank_code);
+}
+
+function check_bank($bank_id, $bank_code)
+{
+    $conn = connect();
+    $sql = "SELECT COUNT(EMAIL) COEMAIL FROM khachhang WHERE EMAIL = '".$_SESSION["email"]."' AND SoTaiKhoan = '".$bank_code."' AND MaNganHang = '".$bank_id."'";
+    $result = mysqli_query($conn, $sql);
+    $row = mysqli_fetch_assoc($result);
+    if ($row["COEMAIL"] > 0) { // Tài khoản hợp lệ
+        echo 1;
+    }else{
+        echo 0;
+    }
+}
+

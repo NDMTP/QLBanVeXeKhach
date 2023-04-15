@@ -26,7 +26,7 @@ $pdv_money = intval(str_replace(['.', ','], '', $_SESSION['tongsotien']), 10);
 
 
 //Tạo vé
-if($khuhoi == 1){
+if ($khuhoi == 1) {
   $v_id = 'V' . rand(1, 999);
   $v_count = "SELECT COUNT(ID_VE) SOVE FROM vexe WHERE vexe.ID_VE = '" . $v_id . "'";
   $result = mysqli_query($conn, $v_count);
@@ -41,7 +41,7 @@ if($khuhoi == 1){
   $v_idchuyenkhuhoi = $_SESSION["idchuyenkhuhoi"]; //Chuyến khứ hồi
   $v_idPdv = $pdv_id;
   $v_idViTri = $_SESSION['idvitri'];
-  
+
   foreach ($_SESSION['idvitri'] as $key => $value) {
     ${'id' . ($key + 1)} = $value;
   }
@@ -50,9 +50,7 @@ if($khuhoi == 1){
     ${'vtr' . ($key + 1)} = $value;
   }
   $v_sove = $_SESSION["tongsove"];
-  
-  
-}else{
+} else {
   //Tạo vé
   $v_id = 'V' . rand(1, 999);
   $v_count = "SELECT COUNT(ID_VE) SOVE FROM vexe WHERE vexe.ID_VE = '" . $v_id . "'";
@@ -67,27 +65,21 @@ if($khuhoi == 1){
   $v_idChuyenXe = $_SESSION["idchuyenxe"];
   $v_idPdv = $pdv_id;
   $v_idViTri = $_SESSION['idvitri'];
-  
+
   foreach ($_SESSION['idvitri'] as $key => $value) {
     ${'id' . ($key + 1)} = $value;
   }
-  
-  
+
+
   $v_sove = $_SESSION["tongsove"];
-  
 }
 
-if ($_POST['action'] == 'xacnhan') {
-  $query = "SELECT COUNT(EMAIL) COEMAIL FROM khachhang WHERE EMAIL = '".$_SESSION["email"]."' AND SoTaiKhoan = '".$_POST['bank-code']."' AND MaNganHang = '".$_POST['idbank']."'";
-  $result = mysqli_query($conn, $query);
-  $row = mysqli_fetch_assoc($result);
-  echo $row["COEMAIL"];
-  if($row["COEMAIL"] > 0) {
-      //Tạo phiếu
+if ($_GET['action'] == 'xacnhan') {
+  //Tạo phiếu
   $query = "INSERT INTO `phieudatve` (`MAPHIEU`, `EMAIL`, `NGAYLAP`, `TongTien`) VALUES ('" . $pdv_id . "', '" . $pdv_email . "', '" . $pdv_date . "', '" . $pdv_money . "')";
   $result = mysqli_query($conn, $query);
   //Tạo vé
-  if($khuhoi == 1){
+  if ($khuhoi == 1) {
     for ($i = 1; $i <= $v_sove; $i++) {
       $idghe = ${'id' . $i};
       $v_ten = 'Vé ' . $v_id;
@@ -99,7 +91,7 @@ if ($_POST['action'] == 'xacnhan') {
     for ($i = 1; $i <= $v_sove; $i++) {
       $idghe = ${'id' . $i};
       $tenvitr = ${'vtr' . $i};
-      $vitrighekhuhoi = "SELECT * FROM vitrighe a, xe b, chuyenxe c WHERE a.BIENSO = b.BIENSO AND b.BIENSO = c.BIENSO AND c.ID_CHUYENXE='".$v_idchuyenkhuhoi."' AND a.TENVITRI ='".$tenvitr."'";
+      $vitrighekhuhoi = "SELECT * FROM vitrighe a, xe b, chuyenxe c WHERE a.BIENSO = b.BIENSO AND b.BIENSO = c.BIENSO AND c.ID_CHUYENXE='" . $v_idchuyenkhuhoi . "' AND a.TENVITRI ='" . $tenvitr . "'";
       $idghekh = mysqli_query($conn, $vitrighekhuhoi);
       $idghekhuhoi = mysqli_fetch_assoc($idghekh);
       $v_ten = 'Vé ' . $v_id;
@@ -107,7 +99,7 @@ if ($_POST['action'] == 'xacnhan') {
       $result = mysqli_query($conn, $query);
       $v_id = 'V' . substr($v_id, 1) + 1;
     }
-  }else{
+  } else {
     for ($i = 1; $i <= $v_sove; $i++) {
       $idghe = ${'id' . $i};
       $v_ten = 'Vé ' . $v_id;
@@ -115,12 +107,6 @@ if ($_POST['action'] == 'xacnhan') {
       $result = mysqli_query($conn, $query);
       $v_id = 'V' . substr($v_id, 1) + 1;
     }
-  }  
-  }else{
-    echo '<script language="javascript">
-    alert("Thông tin không chính xác !");
-    history.back();
-     </script>';
   }
 }
 
@@ -128,62 +114,62 @@ if ($_POST['action'] == 'xacnhan') {
 include('header.php');
 ?>
 <div class="text-center p-4 m-4">
-    <i style="color: green; font-size: 80px;"class="fa-sharp fa-solid fa-circle-check"></i>
-    <h1>Đơn đặt hàng thành công</h1>
-    <p>Mã giao dịch: <?php echo $pdv_id; ?></p>
-    </div>
-    <div class="container">
-        <div class="table-responsive" style="max-width: 1250px;">
-        <table class="table table-striped table-hover align-middle mx-auto">
-        <thead>
+  <i style="color: green; font-size: 80px;" class="fa-sharp fa-solid fa-circle-check"></i>
+  <h1>Đơn đặt hàng thành công</h1>
+  <p>Mã giao dịch: <?php echo $pdv_id; ?></p>
+</div>
+<div class="container">
+  <div class="table-responsive" style="max-width: 1250px;">
+    <table class="table table-striped table-hover align-middle mx-auto">
+      <thead>
         <tr>
           <th scope="col">Thời gian</th>
           <th scope="col">Chuyến xe</th>
           <th scope="col">Số lượng ghế</th>
           <th scope="col">Thành tiền</th>
         </tr>
-        </thead>
-        <tbody>
-          <?php
-            if($khuhoi == 1){
-              $kh_money = $pdv_money / 2;
-              echo '<tr>';
-              echo '<td>'.date('Y-m-d').'</td>';
-              echo '<td>'.$_SESSION["tenchuyenxe"].'</td>';
-              echo '<td>'.$_SESSION["tongsove"].'</td>';
-              echo '<td>'.number_format($kh_money . "000", 0, ',', '.').'</td>';
-              echo '</tr>';
-              echo '<tr>';
-              echo '<td>'.date('Y-m-d').'</td>';
-              echo '<td>'.$_SESSION["tenchuyenkhuhoi"].'</td>';
-              echo '<td>'.$_SESSION["tongsove"].'</td>';
-              echo '<td>'.number_format($kh_money . "000", 0, ',', '.').'</td>';
-              echo '</tr>';
-            }else{
-              echo '<tr>';
-              echo '<td>'.date('Y-m-d').'</td>';
-              echo '<td>'.$_SESSION["tenchuyenxe"].'</td>';
-              echo '<td>'.$_SESSION["tongsove"].'</td>';
-              echo '<td>'.number_format($pdv_money . "000", 0, ',', '.').'</td>';
-              echo '</tr>';
-            }
-          ?>
-        </tbody>
-        </table>
-        </div>
-    </div>
-    <div class="text-center p-4">
-    <p style = "font-size: 20px;">Cảm ơn bạn đã tin tưởng sử dụng dịch vụ của chúng tôi</p>
-    <a href="tel:090-080-0760" style = "font-size: 20px; color:#ba2f25;">Mọi thắc mắc xin liên hệ với số điện thoại sau: 090-080-0760</a>
-    <br>
-    <br>
-    <button class="btn btn-info p-2 m-3" onclick="gotoHomepage()">QUAY LẠI TRANG CHỦ</button>
+      </thead>
+      <tbody>
+        <?php
+        if ($khuhoi == 1) {
+          $kh_money = $pdv_money / 2;
+          echo '<tr>';
+          echo '<td>' . date('Y-m-d') . '</td>';
+          echo '<td>' . $_SESSION["tenchuyenxe"] . '</td>';
+          echo '<td>' . $_SESSION["tongsove"] . '</td>';
+          echo '<td>' . number_format($kh_money . "000", 0, ',', '.') . '</td>';
+          echo '</tr>';
+          echo '<tr>';
+          echo '<td>' . date('Y-m-d') . '</td>';
+          echo '<td>' . $_SESSION["tenchuyenkhuhoi"] . '</td>';
+          echo '<td>' . $_SESSION["tongsove"] . '</td>';
+          echo '<td>' . number_format($kh_money . "000", 0, ',', '.') . '</td>';
+          echo '</tr>';
+        } else {
+          echo '<tr>';
+          echo '<td>' . date('Y-m-d') . '</td>';
+          echo '<td>' . $_SESSION["tenchuyenxe"] . '</td>';
+          echo '<td>' . $_SESSION["tongsove"] . '</td>';
+          echo '<td>' . number_format($pdv_money . "000", 0, ',', '.') . '</td>';
+          echo '</tr>';
+        }
+        ?>
+      </tbody>
+    </table>
   </div>
-  <script>
-    function gotoHomepage(){
-      window.location.href = "index.php";
-    }
-  </script>
+</div>
+<div class="text-center p-4">
+  <p style="font-size: 20px;">Cảm ơn bạn đã tin tưởng sử dụng dịch vụ của chúng tôi</p>
+  <a href="tel:090-080-0760" style="font-size: 20px; color:#ba2f25;">Mọi thắc mắc xin liên hệ với số điện thoại sau: 090-080-0760</a>
+  <br>
+  <br>
+  <button class="btn btn-info p-2 m-3" onclick="gotoHomepage()">QUAY LẠI TRANG CHỦ</button>
+</div>
+<script>
+  function gotoHomepage() {
+    window.location.href = "index.php";
+  }
+</script>
 <?php
 include('footer.php');
 ?>

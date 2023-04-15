@@ -115,6 +115,9 @@
                       <th
                           class="col-2 text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                           Tên phiếu</th>
+                          <th
+                          class="col-1 text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                          Số vé</th>
                         <th
                           class="col-3 text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
                           Tên chuyến xe</th>
@@ -122,7 +125,7 @@
                           class="col-2 text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                           Thời điểm đi</th>
                         <th
-                          class="col-3 text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                          class="col-2 text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
                           Ngày lập hóa đơn</th>
                           <th
                           class="col-1 text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
@@ -137,7 +140,7 @@
 
                       <?php
                       //tao chuoi luu cau lenh sql
-                      $sql = "SELECT DISTINCT phieudatve.MAPHIEU, chuyenxe.TENCHUYENXE, chuyenxe.THOIDIEMDITT, phieudatve.NGAYLAP, tuyenxe.GIAHIENHANH
+                      $sql = "SELECT DISTINCT phieudatve.MAPHIEU, chuyenxe.TENCHUYENXE, chuyenxe.THOIDIEMDITT, phieudatve.NGAYLAP, tuyenxe.GIAHIENHANH, COUNT(phieudatve.MAPHIEU) SOVE
                               FROM vexe
                               INNER JOIN phieudatve ON vexe.MAPHIEU = phieudatve.MAPHIEU
                               INNER JOIN khachhang ON phieudatve.EMAIL = khachhang.EMAIL
@@ -168,6 +171,10 @@
                             ?>
                           </td>
                           <td class="align-middle text-center">
+                            <!-- ma hd -->
+                            <?php echo $row[5] ?>
+                          </td>
+                          <td class="align-middle text-center">
                             <!-- ngayhoanthanh -->
                             <?php echo $row[1] ?>
                           </td>
@@ -183,9 +190,9 @@
   
                             <?php
   
-                                $number = $row[4];
+                                $number = $row[4]*$row[5];
                                 $formatted_number = number_format($number, 3);
-                                echo $formatted_number;
+                                echo $formatted_number. "đ";
                                 ?>
   
                           </td>
@@ -217,6 +224,7 @@
                         </td>
                         <div style="margin-top: 10px;">
                         <td></td>
+                        <td></td>
                           <td style="text-align: right">
                             <br>
                             <b> Tổng tiền: <b>
@@ -227,7 +235,7 @@
                             <?php
                             $number = $tongve;
                             $formatted_number = number_format($number, 3);
-                            echo $formatted_number;
+                            echo $formatted_number."đ";
                             ?>
                           </td>
                         </div>
