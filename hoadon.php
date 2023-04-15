@@ -377,8 +377,6 @@
                     </div>
                   </div>
                 </div>
-                <!-- thongtin nhanvien -->
-
               </div>
             </div>
           </div>

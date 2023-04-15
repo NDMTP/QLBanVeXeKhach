@@ -16,13 +16,13 @@ include("header.php");
     }
     if (isset($_POST['ngaydi'])) {
         $ngaydi = $_POST['ngaydi'];
-    }else{
+    } else {
         $ngaydi = "";
     }
     //Khứ hồi
     if (isset($_POST['ngayve'])) {
         $ngayve = $_POST['ngayve'];
-    }else{
+    } else {
         $ngayve = "";
     }
     ?>
@@ -272,16 +272,15 @@ include("header.php");
             </div>
             <div class="row">
                 <div class="col">
-                    <button type="button" class="btn btn-outline-secondary mt-2" style="float: right;"
-                        onclick="getNewChuyenXe()">Lọc chuyến xe</button>
+                    <button type="button" class="btn btn-outline-secondary mt-2" style="float: right;" onclick="getNewChuyenXe()">Lọc chuyến xe</button>
                 </div>
             </div>
             <hr>
             <div id="chuyenxe_ajax"></div>
             <?php
-            if(isset($_SESSION["email"])){
+            if (isset($_SESSION["email"])) {
                 $direct = 'xacnhanthongtindatve.php';
-            }else{
+            } else {
                 $direct = 'taikhoan.php';
             }
             $sql = "SELECT *, bxdi.TENBEN TENBENDI, bxden.TENBEN TENBENDEN, bxdi.MABX IDBENDI, bxden.MABX IDBENDEN FROM chuyenxe c, tuyenxe a, benxe bxdi, benxe bxden, quanhuyen qhdi, quanhuyen qhden , tinhthanh ttdi, tinhthanh ttden, xe x, loaixe lx
@@ -291,13 +290,13 @@ include("header.php");
                 AND qhdi.MATINH = ttdi.MATINH AND qhden.MATINH = ttden.MATINH
                 AND c.BIENSO = x.BIENSO AND x.ID_LOAI = lx.ID_LOAI
                 AND ttdi.MATINH = '" . $diemdi . "' AND ttden.MATINH = '" . $diemden . "'
-                AND c.TGDUKIENKHOIHANH like '".$ngaydi."%'" ;
+                AND c.TGDUKIENKHOIHANH like '" . $ngaydi . "%'";
             $result = mysqli_query($conn, $sql);
             if (mysqli_num_rows($result) > 0) {
                 echo '<div id="chuyenxe_item">';
                 echo '<h6 class="card-title text-muted">KẾT QUẢ:</h6>';
                 while ($row = mysqli_fetch_assoc($result)) {
-                    echo '<form action="'.$direct.'" method="post">';
+                    echo '<form action="' . $direct . '" method="post">';
                     echo '<div class="mt-4">';
                     echo '<div class="container border shadow p-4" style="border-radius: 10px;">';
                     echo '<div class="row">';
@@ -365,52 +364,52 @@ include("header.php");
 
 
     <script>
-    // LẤY BẾN ĐI MỚI VÀ THAY VÀO CHỔ CHỌN BẾN ĐI KHI NGƯỜI DÙNG BẤM CHỌN QUẬN HUYỆN
+        // LẤY BẾN ĐI MỚI VÀ THAY VÀO CHỔ CHỌN BẾN ĐI KHI NGƯỜI DÙNG BẤM CHỌN QUẬN HUYỆN
 
-    function getDivBenDi() {
-        var maquanhuyen = document.getElementById("quanhuyendi").value;
-        var matinhdi = document.getElementById("diemdi").value;
-        var xmlhttp = new XMLHttpRequest();
+        function getDivBenDi() {
+            var maquanhuyen = document.getElementById("quanhuyendi").value;
+            var matinhdi = document.getElementById("diemdi").value;
+            var xmlhttp = new XMLHttpRequest();
 
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                // xử lý phản hồi từ server
-                document.getElementById("ajaxbendi").innerHTML = this.responseText;
-            }
-        };
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // xử lý phản hồi từ server
+                    document.getElementById("ajaxbendi").innerHTML = this.responseText;
+                }
+            };
 
-        xmlhttp.open("GET", "datve_function.php?function=ajaxbendi&matinh=" + matinhdi + "&maquanhuyen=" + maquanhuyen,
-            true);
-        xmlhttp.send();
-        document.getElementById("bendi").remove();
+            xmlhttp.open("GET", "datve_function.php?function=ajaxbendi&matinh=" + matinhdi + "&maquanhuyen=" + maquanhuyen,
+                true);
+            xmlhttp.send();
+            document.getElementById("bendi").remove();
 
-    }
+        }
 
-    function getDivBenDen() {
-        var maquanhuyen = document.getElementById("quanhuyenden").value;
-        var matinhden = document.getElementById("diemden").value;
-        var xmlhttp = new XMLHttpRequest();
+        function getDivBenDen() {
+            var maquanhuyen = document.getElementById("quanhuyenden").value;
+            var matinhden = document.getElementById("diemden").value;
+            var xmlhttp = new XMLHttpRequest();
 
-        xmlhttp.onreadystatechange = function() {
-            if (this.readyState == 4 && this.status == 200) {
-                // xử lý phản hồi từ server
-                document.getElementById("ajaxbenden").innerHTML = this.responseText;
-            }
-        };
+            xmlhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                    // xử lý phản hồi từ server
+                    document.getElementById("ajaxbenden").innerHTML = this.responseText;
+                }
+            };
 
-        xmlhttp.open("GET", "datve_function.php?function=ajaxbenden&matinh=" + matinhden + "&maquanhuyen=" +
-            maquanhuyen, true);
-        xmlhttp.send();
-        document.getElementById("benden").remove();
-    }
+            xmlhttp.open("GET", "datve_function.php?function=ajaxbenden&matinh=" + matinhden + "&maquanhuyen=" +
+                maquanhuyen, true);
+            xmlhttp.send();
+            document.getElementById("benden").remove();
+        }
 
-    // LẤY CHUYẾN XE MỚI VÀ THAY VÀO CHUYẾN XE CŨ KHI NGƯỜI DÙNG BẤM LỌC
+        // LẤY CHUYẾN XE MỚI VÀ THAY VÀO CHUYẾN XE CŨ KHI NGƯỜI DÙNG BẤM LỌC
 
-    function makeNull(x) {
-        if (x == "Chọn")
-            x = "";
-        return x;
-    }
+        function makeNull(x) {
+            if (x == "Chọn")
+                x = "";
+            return x;
+        }
 
         function getNewChuyenXe() {
             var maquanhuyendi = makeNull(document.getElementById("quanhuyendi").value);
@@ -432,7 +431,7 @@ include("header.php");
                 }
             };
 
-            xmlhttp.open("GET", "datve_function.php?function=ajaxchuyenxe&maquanhuyendi=" + maquanhuyendi + "&maquanhuyenden=" + maquanhuyenden + "&mabendi=" + mabendi + "&mabenden=" + mabenden + "&matinhdi=" + matinhdi + "&matinhden=" + matinhden+ "&ngaydi=" + ngaydi, true);
+            xmlhttp.open("GET", "datve_function.php?function=ajaxchuyenxe&maquanhuyendi=" + maquanhuyendi + "&maquanhuyenden=" + maquanhuyenden + "&mabendi=" + mabendi + "&mabenden=" + mabenden + "&matinhdi=" + matinhdi + "&matinhden=" + matinhden + "&ngaydi=" + ngaydi, true);
             xmlhttp.send();
 
             document.getElementById("chuyenxe_item").remove();
@@ -472,6 +471,7 @@ include("header.php");
         var sumTicket = 0; //Biến cộng vé 
         var tenvitri = [];
         var idvitri = [];
+
         function getTableGhe() {
             sumTicket = 0;
             tenvitri = [];
@@ -493,6 +493,15 @@ include("header.php");
             xmlhttp.onreadystatechange = function() {
                 if (this.readyState == 4 && this.status == 200) {
                     codeDiv.innerHTML = this.responseText;
+                    var btnBook = document.getElementById("bookticket");
+                    btnBook.onclick = function() {
+                        if (sumTicket > 0) {
+
+                        } else {
+                            alert('Vui lòng chọn vị trí rồi tiếp tục');
+                            event.preventDefault();
+                        }
+                    }
                 }
             };
             xmlhttp.open("GET", "datve_function.php?function=get_tableghe&biensoxe=" + biensoxe + "&idchuyenxe=" + idchuyenxe + "&idbendi=" + idbendi + "&idbenden=" + idbenden + "&ngayve=" + ngayve + "&khuhoi=" + khuhoi, true);
@@ -527,15 +536,23 @@ include("header.php");
                 idvitri.pop();
                 $(button).removeClass('btn-danger').addClass('btn-info');
             }
-            var money = (sumTicket*nowmoney).toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
+            var money = (sumTicket * nowmoney).toLocaleString('vi-VN', {
+                style: 'currency',
+                currency: 'VND'
+            });
 
-            document.getElementById("sumticket").innerHTML = "Tổng số vé: "+sumTicket+" vé";
-            document.getElementById("summoney").innerHTML = "Tổng tiền: "+money.slice(0,-2)+".000đ";
-            
+            document.getElementById("sumticket").innerHTML = "Tổng số vé: " + sumTicket + " vé";
+            document.getElementById("summoney").innerHTML = "Tổng tiền: " + money.slice(0, -2) + ".000đ";
+
             $.ajax({
                 url: "datve_function.php",
                 type: "POST",
-                data: {sumTicket: sumTicket, money: money.slice(0,-2), idVitri: idvitri, tenVitri: tenvitri},
+                data: {
+                    sumTicket: sumTicket,
+                    money: money.slice(0, -2),
+                    idVitri: idvitri,
+                    tenVitri: tenvitri
+                },
                 success: function(response) {
                     console.log(response);
                 },
@@ -545,49 +562,49 @@ include("header.php");
             });
         }
 
-    //LẤY CÁI GHẾ ĐEM ĐỔI MÀU RỒI TÍNH SỐ VÉ VỚI TIỀN
+        //LẤY CÁI GHẾ ĐEM ĐỔI MÀU RỒI TÍNH SỐ VÉ VỚI TIỀN
 
-    function showInfoPrice(button) {
-        var idVitri = button.getAttribute("data-id");
-        var tenVitri = button.getAttribute("data-name");
-        var nowmoney = event.target.closest('.container').querySelector('.now-money').textContent;
-        // Nếu chưa đặt
-        if ($(button).hasClass('btn-info')) {
-            sumTicket++;
-            tenvitri.push(tenVitri);
-            idvitri.push(idVitri);
-            $(button).removeClass('btn-info').addClass('btn-danger');
+        function showInfoPrice(button) {
+            var idVitri = button.getAttribute("data-id");
+            var tenVitri = button.getAttribute("data-name");
+            var nowmoney = event.target.closest('.container').querySelector('.now-money').textContent;
+            // Nếu chưa đặt
+            if ($(button).hasClass('btn-info')) {
+                sumTicket++;
+                tenvitri.push(tenVitri);
+                idvitri.push(idVitri);
+                $(button).removeClass('btn-info').addClass('btn-danger');
 
-        } else {
-            sumTicket--;
-            tenvitri.pop();
-            idvitri.pop();
-            $(button).removeClass('btn-danger').addClass('btn-info');
-        }
-        var money = (sumTicket * nowmoney).toLocaleString('vi-VN', {
-            style: 'currency',
-            currency: 'VND'
-        });
-        document.getElementById("sumticket").innerHTML = "Tổng số vé: " + sumTicket + " vé";
-        document.getElementById("summoney").innerHTML = "Tổng tiền: " + money.slice(0, -2) + ".000đ";
-
-        $.ajax({
-            url: "datve_function.php",
-            type: "POST",
-            data: {
-                sumTicket: sumTicket,
-                money: money.slice(0, -2),
-                idVitri: idvitri,
-                tenVitri: tenvitri
-            },
-            success: function(response) {
-                console.log(response);
-            },
-            error: function(jqXHR, textStatus, errorThrown) {
-                console.log(textStatus, errorThrown);
+            } else {
+                sumTicket--;
+                tenvitri.pop();
+                idvitri.pop();
+                $(button).removeClass('btn-danger').addClass('btn-info');
             }
-        });
-    }
+            var money = (sumTicket * nowmoney).toLocaleString('vi-VN', {
+                style: 'currency',
+                currency: 'VND'
+            });
+            document.getElementById("sumticket").innerHTML = "Tổng số vé: " + sumTicket + " vé";
+            document.getElementById("summoney").innerHTML = "Tổng tiền: " + money.slice(0, -2) + ".000đ";
+
+            $.ajax({
+                url: "datve_function.php",
+                type: "POST",
+                data: {
+                    sumTicket: sumTicket,
+                    money: money.slice(0, -2),
+                    idVitri: idvitri,
+                    tenVitri: tenvitri
+                },
+                success: function(response) {
+                    console.log(response);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+        }
     </script>
 
 
