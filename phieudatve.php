@@ -78,7 +78,12 @@ if($khuhoi == 1){
 }
 
 if ($_POST['action'] == 'xacnhan') {
-  //Tạo phiếu
+  $query = "SELECT COUNT(EMAIL) COEMAIL FROM khachhang WHERE EMAIL = '".$_SESSION["email"]."' AND SoTaiKhoan = '".$_POST['bank-code']."' AND MaNganHang = '".$_POST['idbank']."'";
+  $result = mysqli_query($conn, $query);
+  $row = mysqli_fetch_assoc($result);
+  echo $row["COEMAIL"];
+  if($row["COEMAIL"] > 0) {
+      //Tạo phiếu
   $query = "INSERT INTO `phieudatve` (`MAPHIEU`, `EMAIL`, `NGAYLAP`, `TongTien`) VALUES ('" . $pdv_id . "', '" . $pdv_email . "', '" . $pdv_date . "', '" . $pdv_money . "')";
   $result = mysqli_query($conn, $query);
   //Tạo vé
@@ -110,6 +115,12 @@ if ($_POST['action'] == 'xacnhan') {
       $result = mysqli_query($conn, $query);
       $v_id = 'V' . substr($v_id, 1) + 1;
     }
+  }  
+  }else{
+    echo '<script language="javascript">
+    alert("Thông tin không chính xác !");
+    history.back();
+     </script>';
   }
 }
 

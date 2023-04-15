@@ -267,7 +267,7 @@ function get_TableGhe($biensoxe, $idchuyenxe)
     echo '<td> <button type="button" class="btn m-1 btn-secondary" style="padding:1.3rem;"></button></td>';
     echo '<td class="border-0"> </td>';
     echo '</tr>';
-    $emptyChair = "SELECT * FROM vitrighe vt, xe x, loaixe lx WHERE vt.BIENSO = x.BIENSO AND x.ID_LOAI = lx.ID_LOAI AND x.BIENSO = '" . $biensoxe . "' GROUP BY vt.TENVITRI;";
+    $emptyChair = "SELECT * FROM vitrighe vt, xe x, loaixe lx WHERE vt.BIENSO = x.BIENSO AND x.ID_LOAI = lx.ID_LOAI AND x.BIENSO = '" . $biensoxe . "' ORDER BY vt.TENVITRI;";
     $result = mysqli_query($conn, $emptyChair);
     if (mysqli_num_rows($result) > 0) {
         $row = mysqli_fetch_assoc($result);
@@ -275,7 +275,7 @@ function get_TableGhe($biensoxe, $idchuyenxe)
         for ($i = 1; $i <= 5; $i++) {
             echo '<tr>';
             for ($j = 1; $j <= 3; $j++) {
-                if ($row = mysqli_fetch_assoc($result)) {
+                if ($row !== NULL) {
                     $isBook = "SELECT COUNT(ID_VE) COCHO FROM vexe WHERE vexe.ID_VITRI = '".$row["ID_VITRI"]."'";
                     $resultBook = mysqli_query($conn, $isBook);
                     $checkBook = mysqli_fetch_assoc($resultBook);
@@ -284,6 +284,7 @@ function get_TableGhe($biensoxe, $idchuyenxe)
                     }else{
                         echo '<td> <button type="button" class="btn btn-info m-1 p-2" onclick="showInfoPrice(this)" data-name="' . $row["TENVITRI"] . '" data-id="' . $row["ID_VITRI"] . '">' . $row["TENVITRI"] . '</button></td>';
                     }
+                    $row = mysqli_fetch_assoc($result);
                 } else {
                     echo '<td> &nbsp; </td>';
                 }
@@ -302,7 +303,7 @@ function get_TableGhe($biensoxe, $idchuyenxe)
         for ($i = 1; $i <= 5; $i++) {
             echo '<tr>';
             for ($j = 1; $j <= 3; $j++) {
-                if ($row = mysqli_fetch_assoc($result)) {
+                if ($row !== NULL) {
                     $isBook = "SELECT COUNT(ID_VE) COCHO FROM vexe WHERE vexe.ID_VITRI = '".$row["ID_VITRI"]."' AND vexe.ID_CHUYENXE = '".$idchuyenxe."'";
                     $resultBook = mysqli_query($conn, $isBook);
                     $checkBook = mysqli_fetch_assoc($resultBook);
@@ -311,6 +312,7 @@ function get_TableGhe($biensoxe, $idchuyenxe)
                     }else{
                         echo '<td> <button type="button" class="btn btn-info m-1 p-2" onclick="showInfoPrice(this)" data-name="' . $row["TENVITRI"] . '" data-id="' . $row["ID_VITRI"] . '">' . $row["TENVITRI"] . '</button></td>';
                     }
+                    $row = mysqli_fetch_assoc($result);
                 } else {
                     echo '<td> &nbsp; </td>';
                 }
@@ -387,3 +389,5 @@ if (isset($_POST['sumTicket']) && isset($_POST['money'])) {
     $_SESSION['idvitri'] = $_POST['idVitri'];
     $_SESSION['tenvitri'] = $_POST['tenVitri'];
 }
+
+
