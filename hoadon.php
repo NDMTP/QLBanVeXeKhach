@@ -51,12 +51,7 @@
                 <h6 class="text-center mb-0 font-weight-bold">Tiền mặt</h6>
 
                 <hr class="horizontal dark my-2">
-                <h5 class="mb-0 ">
-                  <?php
-                  $number = $tong1["TongTien"];
-                  $formatted_number = number_format($number, 3);
-                  echo $formatted_number ?> đồng
-                </h5>
+                <h5 class="mb-0"> Đang bảo trì</h5>
               </div>
             </div>
           </div>
@@ -70,7 +65,12 @@
                 <img src="https://img.icons8.com/bubbles/100/null/bank-building.png" />
                 <h6 class="text-center mb-0 font-weight-bold">Chuyển khoản ngân hàng</h6>
                 <hr class="horizontal dark my-2">
-                <h5 class="mb-0"> Đang bảo trì </h5>
+                <h5 class="mb-0 ">
+                  <?php
+                  $number = $tong1["TongTien"];
+                  $formatted_number = number_format($number, 3);
+                  echo $formatted_number ?> đồng
+                </h5>
 
               </div>
             </div>
