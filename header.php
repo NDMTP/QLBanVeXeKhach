@@ -66,6 +66,7 @@ include("connect.php");
     </div>
 
     <header>
+        
         <nav class="navbar navbar-expand-lg">
             <div class="container">
                 <a class="navbar-brand" href="index.php">
@@ -125,5 +126,6 @@ include("connect.php");
 
 
 </body>
+
 
 </html>

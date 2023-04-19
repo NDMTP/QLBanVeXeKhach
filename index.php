@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="EN">
 <title>Trang chủ - Hệ thống xe ABC</title>
+<body>
+
 <?php
 include("header.php");
 ?>
@@ -141,8 +143,10 @@ include("header.php");
 
     </div>
 </form>
+
 <!-- Bảng giá -->
 <div class="container">
+    
     <h4 class="title3 font-weight-bold">TUYẾN PHỔ BIẾN</h4>
     <!-- Dòng đầu  -->
     <div class="row">
@@ -353,7 +357,12 @@ include("header.php");
 
 
 <div>
-    <h1 class="tieude font-weight-bold">ABC - CHẤT LƯỢNG LÀ DANH DỰ</h1>
+    <h1 class="tieude font-weight-bold" >ABC - CHẤT LƯỢNG LÀ DANH DỰ</h1>
+    <img src="assets/images/nenan.jpg" class="d-block w-100" 
+style="  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.3;"
+>
 </div>
 
 
