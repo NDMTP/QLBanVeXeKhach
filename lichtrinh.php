@@ -6,7 +6,7 @@ include("connect.php");
 ?>
  <title>Lịch Trình</title>
 <!-- Tim kiem tuyen-->
-<div class="row timtuyen container">
+<div class="row timtuyen container " style="margin-left: 375px;">
     <div class="col-6 mt-3">
         <form class="d-flex" action="timkiem.php" method="POST">
             <input name="tentinh" list="tinh" class="form-control me-2" type="text" placeholder="Tìm Điểm Đi">
