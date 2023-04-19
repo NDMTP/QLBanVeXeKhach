@@ -113,7 +113,7 @@ session_start();
                             <a href="index.php" class="nav-item nav-link active">Trang chủ</a>
                             <a href="lichtrinh.php" class="nav-item nav-link text-dark">Lịch Trình</a>
                             <a href="services.php" class="nav-item nav-link text-dark">Liên hệ</a>
-                            <a href="tracuuhoadon.php" class="nav-item nav-link text-dark">Hóa đơn</a>
+                            <a href="hoadon.php" class="nav-item nav-link text-dark">Hóa đơn</a>
 
                         </div>
 
