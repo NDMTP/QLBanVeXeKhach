@@ -26,7 +26,7 @@ include("connect.php");
     </div>
     <div class="col-6 mt-3 ">
         <form class="d-flex" action="timkiem.php" method="POST">
-            <input name="tinhcuoi" list="tinhcuoi" class="form-control me-2" type="text" placeholder="Tìm Điểm Đi">
+            <input name="tinhcuoi" list="tinhcuoi" class="form-control me-2" type="text" placeholder="Tìm Điểm Đến">
             <datalist id="tinhcuoi">
                 <option value="An Giang">
                 <option value="Cà Mau">
@@ -84,7 +84,7 @@ while ($row = $result1->fetch_array()) {
         echo '<td>' . $row[0] . '</td>';
         echo '<td>' . $row[1] . ' Km</td>';
         echo '<td>' . $row[2] . ' Giờ</td>';
-        echo '<td><a href="#" class="text-decoration-none">Chi tiết <i class="fa-solid fa-circle-info"></i></a></td>';
+        echo '<td></td>';
         echo '<td><button type="submit" class="text-danger border-0 bg-transparent" style="cursor: pointer;"><i class="fa-solid fa-ticket-simple"></i> Đặt Vé</button></td>';
         echo '</form>';
         echo '</tr>';

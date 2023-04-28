@@ -11,7 +11,7 @@ die("Connection failed: " . $conn->connect_error);
 
 session_start();
 if(isset($_POST["sb"])){
-    $sql=" UPDATE nhanvien SET HOTEN='".$_POST["ten"]."',NAMSINH='".$_POST["ngaysinh"]."',
+    $sql=" UPDATE khachhang SET HOTEN='".$_POST["ten"]."',NAMSINH='".$_POST["ngaysinh"]."',
     GIOITINH='".$_POST["gioitinh"]."',SDT='".$_POST["sdt"]."',DIACHI='".$_POST["diachi"]."' WHERE email='".$_SESSION["email"]."'
     ";
     $result = $conn->query($sql);
@@ -33,7 +33,7 @@ if(isset($_POST["sb"])){
 
 
 if(isset($_POST["sbpsw"])){
-    $sql1 = "select * from nhanvien
+    $sql1 = "select * from khachhang
     where email = '".$_SESSION["email"]."' 
     and password = '".md5($_POST["psw2"])."'";
     $result = $conn->query($sql1);
@@ -51,7 +51,7 @@ if(isset($_POST["sbpsw"])){
                </script>';
           }
           else{
-              $sql=" UPDATE nhanvien set password = ' ".md5($_POST["psw"])." ' 
+              $sql=" UPDATE khachhang set password = ' ".md5($_POST["psw"])." ' 
               where email = '".$_SESSION["email"]." '";
             //  print_r($sql);
               $result1 = $conn->query($sql);
