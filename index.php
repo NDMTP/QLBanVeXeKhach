@@ -10,13 +10,7 @@ include("header.php");
 
 <form action="datve.php" method="post" class="container border rounded shadow mt-5 mb-5">
     <!-- Cái khung, bo gốc -->
-    <div class=" mt-5 ml-5 mb-3 pl-5 " style="font-size: larger;">
-        <input type="radio" name="loaidi" id="motchieu" checked
-            onchange="document.getElementById('ngayve').disabled = true;"> Một chiều
-        <input type="radio" name="loaidi" id="khuhoi" class="ml-5"
-            onchange="document.getElementById('ngayve').disabled = false;"> Khứ hồi
-    </div>
-    <div class="border1 mb-5 ml-5 shadow-lg p-5">
+    <div class="border1 mb-5 ml-5 mt-5 shadow-lg p-5">
         <!-- Nhớ xóa border -->
         <div class="container">
             <div class="row">
@@ -131,7 +125,7 @@ include("header.php");
                             echo "Không thể đặt vé cho ngày đã qua.";
                         } else {
                             // Hiển thị ngày về
-                            echo "<input type='date' id='ngayve' name='ngayve' min='$currentDate' disabled required>";
+                            echo "<input type='date' id='ngayve' name='ngayve' min='$currentDate'>";
                         }
                         ?>
                     </div>
